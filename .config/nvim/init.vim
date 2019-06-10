@@ -1,10 +1,11 @@
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugins (managed with `junegunn/vim-plug`) 
 call plug#begin('~/.vim/plugs')
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-commentary'
 Plug 'kien/ctrlp.vim'
-Plug 'morhetz/gruvbox'
+" Plug 'morhetz/gruvbox'
+Plug 'ayu-theme/ayu-vim'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'prettier/vim-prettier'
@@ -17,9 +18,10 @@ Plug 'w0rp/ale'
 Plug 'Valloric/YouCompleteMe'
 call plug#end()
  
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General 
 set fileformat=unix
+set shell=bash
 set noswapfile
 
 " Indent using spaces instead of tabs
@@ -53,7 +55,7 @@ nmap <C-l> <C-w>l
 " `jj` to exit insert
 :imap jj <Esc>
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Git mappings
 :command GS Gstatus
 :command GC Gcommit -v
@@ -62,14 +64,16 @@ nmap <C-l> <C-w>l
 :command GD Gdiff
 :command GA Gwrite
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Theme
 set termguicolors
+let ayucolor="mirage"
+colo ayu
 " colo slate
-colo gruvbox
-set bg=dark
+" colo gruvbox
+" set bg=dark
  
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Linter
 nnoremap = :Prettier<CR>
 let g:ale_fixers = {
@@ -86,12 +90,12 @@ autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.gra
 " Use JSON in .babelrc files
 autocmd BufRead,BufNewFile .babelrc setfiletype json
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " React
 " Allow JSX in .js files
 let g:jsx_ext_required=0
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CtrlP
 let g:ctrlp_map='<c-p>'
 let g:ctrlp_cmd='CtrlP'
@@ -102,7 +106,7 @@ let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclu
 " Highlight search matches
 set hlsearch
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Autocomplete
 " <C-Space> to open
 inoremap <C-x> <C-x><C-o>
@@ -115,7 +119,7 @@ inoremap <expr> <c-k> ("\<C-p>")
 filetype plugin on
 set omnifunc=syntaxcomplete#Complete
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NERDTree
 let NERDTreeShowHidden=1
 autocmd vimenter * NERDTree
