@@ -4,8 +4,9 @@ call plug#begin('~/.vim/plugs')
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-commentary'
 Plug 'kien/ctrlp.vim'
-" Plug 'morhetz/gruvbox'
-Plug 'ayu-theme/ayu-vim'
+Plug 'vim-ctrlspace/vim-ctrlspace'
+Plug 'morhetz/gruvbox'
+" Plug 'ayu-theme/ayu-vim'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'prettier/vim-prettier'
@@ -16,6 +17,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'mattn/webapi-vim'
 Plug 'w0rp/ale'
 Plug 'Valloric/YouCompleteMe'
+Plug 'rking/ag.vim'
 call plug#end()
  
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -67,11 +69,11 @@ nmap <C-l> <C-w>l
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Theme
 set termguicolors
-let ayucolor="mirage"
-colo ayu
+" let ayucolor="mirage"
+" colo ayu
 " colo slate
-" colo gruvbox
-" set bg=dark
+colo gruvbox
+set bg=dark
  
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Linter
@@ -105,6 +107,16 @@ let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclu
 
 " Highlight search matches
 set hlsearch
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" CtrlSpace 
+set nocompatible
+set hidden
+let g:CtrlSpaceDefaultMappingKey = "<C-space> "
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Ag 
+let g:ag_working_path_mode="r"
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Autocomplete
