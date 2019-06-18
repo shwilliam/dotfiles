@@ -5,17 +5,19 @@ Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-commentary'
 Plug 'kien/ctrlp.vim'
 Plug 'vim-ctrlspace/vim-ctrlspace'
-Plug 'morhetz/gruvbox'
+Plug 'chriskempson/base16-vim'
+" Plug 'morhetz/gruvbox'
 " Plug 'ayu-theme/ayu-vim'
-Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
+Plug 'itchyny/lightline.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'mattn/webapi-vim'
+Plug 'jiangmiao/auto-pairs'
 Plug 'prettier/vim-prettier'
 " ^Requires prettier
-Plug 'jiangmiao/auto-pairs'
-Plug 'tpope/vim-fugitive'
-" ^Requires eslint
-Plug 'mattn/webapi-vim'
 Plug 'w0rp/ale'
+" ^Requires eslint
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
 Plug 'Valloric/YouCompleteMe'
 Plug 'rking/ag.vim'
 call plug#end()
@@ -69,11 +71,12 @@ nmap <C-l> <C-w>l
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Theme
 set termguicolors
+colo base16-tube
+" colo gruvbox
+" set bg=dark
 " let ayucolor="mirage"
 " colo ayu
 " colo slate
-colo gruvbox
-set bg=dark
  
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Linter
@@ -113,6 +116,9 @@ set hlsearch
 set nocompatible
 set hidden
 let g:CtrlSpaceDefaultMappingKey = "<C-space> "
+
+noremap ,, :tabp <CR>
+noremap .. :tabn <CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Ag 
