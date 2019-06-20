@@ -5,8 +5,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-commentary'
 Plug 'kien/ctrlp.vim'
 Plug 'vim-ctrlspace/vim-ctrlspace'
-Plug 'chriskempson/base16-vim'
-" Plug 'morhetz/gruvbox'
+Plug 'morhetz/gruvbox'
 " Plug 'ayu-theme/ayu-vim'
 Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-fugitive'
@@ -59,6 +58,9 @@ nmap <C-l> <C-w>l
 " `jj` to exit insert
 :imap jj <Esc>
 
+" Quick copy to new file 
+vnoremap <C-y> :'<,'>w %:h/
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Git mappings
 :command GS Gstatus
@@ -71,8 +73,7 @@ nmap <C-l> <C-w>l
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Theme
 set termguicolors
-colo base16-tube
-" colo gruvbox
+colo gruvbox
 " set bg=dark
 " let ayucolor="mirage"
 " colo ayu
@@ -140,5 +141,4 @@ set omnifunc=syntaxcomplete#Complete
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NERDTree
 let NERDTreeShowHidden=1
-autocmd vimenter * NERDTree
 
