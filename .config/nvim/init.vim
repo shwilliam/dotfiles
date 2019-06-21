@@ -145,4 +145,5 @@ set omnifunc=syntaxcomplete#Complete
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NERDTree
 let NERDTreeShowHidden=1
+let NERDTreeMapOpenInTab='<Enter>'
 
