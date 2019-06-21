@@ -23,9 +23,15 @@ call plug#end()
  
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General 
+noremap <space> :
+let mapleader=","
+
+set nocompatible
 set fileformat=unix
 set shell=bash
 set noswapfile
+set hidden
+set autoindent
 
 " Indent using spaces instead of tabs
 set expandtab
@@ -36,6 +42,13 @@ set tabstop=2
 
 " Number of spaces to use for a <Tab> during editing operations
 set softtabstop=2
+
+" Highlight search matches
+set hlsearch
+set incsearch
+set showmatch
+set ignorecase
+set smartcase
 
 " Line numbers
 :set number
@@ -66,7 +79,6 @@ vnoremap <C-y> :'<,'>w %:h/
 :command GS Gstatus
 :command GC Gcommit -v
 :command GCA Gcommit --amend
-:command GP Gpush
 :command GD Gdiff
 :command GA Gwrite
 
@@ -109,13 +121,8 @@ let g:ctrlp_cmd='CtrlP'
 " Excluded dirs
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
-" Highlight search matches
-set hlsearch
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CtrlSpace 
-set nocompatible
-set hidden
 let g:CtrlSpaceDefaultMappingKey = "<C-space> "
 
 noremap ,, :tabp <CR>
@@ -128,10 +135,6 @@ noremap // :Ag
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Autocomplete
-" <C-Space> to open
-inoremap <C-x> <C-x><C-o>
-inoremap <C-@> <C-Space>
-
 " Move up and down suggestions with <c-j> and <c-k>
 inoremap <expr> <c-j> ("\<C-n>")
 inoremap <expr> <c-k> ("\<C-p>")
