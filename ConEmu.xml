@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <key name="Software">
 	<key name="ConEmu">
-		<key name=".Vanilla" modified="2019-06-21 11:22:50" build="190526">
+		<key name=".Vanilla" modified="2019-06-21 23:36:20" build="190526">
 			<value name="StartType" type="hex" data="02"/>
 			<value name="CmdLine" type="string" data=""/>
 			<value name="StartTasksFile" type="string" data=""/>
@@ -249,8 +249,8 @@
 			<value name="ConWnd X" type="long" data="0"/>
 			<value name="ConWnd Y" type="long" data="68"/>
 			<value name="LastMonitor" type="string" data="0,68,3840,2160"/>
-			<value name="ConWnd Width" type="dword" data="0000005b"/>
-			<value name="ConWnd Height" type="dword" data="00000034"/>
+			<value name="ConWnd Width" type="dword" data="0000006a"/>
+			<value name="ConWnd Height" type="dword" data="00000036"/>
 			<value name="16bit Height" type="ulong" data="0"/>
 			<value name="Language" type="string" data="en"/>
 			<value name="StartCreateDelay" type="ulong" data="100"/>
@@ -458,7 +458,7 @@
 			<value name="DragPanel" type="hex" data="02"/>
 			<value name="DragPanelBothEdges" type="hex" data="00"/>
 			<value name="KeyBarRClick" type="hex" data="01"/>
-			<value name="StatusBar.Show" type="hex" data="01"/>
+			<value name="StatusBar.Show" type="hex" data="00"/>
 			<value name="StatusBar.Flags" type="dword" data="00000002"/>
 			<value name="StatusFontFace" type="string" data="Segoe UI"/>
 			<value name="StatusFontCharSet" type="ulong" data="0"/>
@@ -504,9 +504,9 @@
 			<value name="StatusBar.Hide.Transparency" type="hex" data="01"/>
 			<value name="StatusBar.Hide.New" type="hex" data="00"/>
 			<value name="StatusBar.Hide.Sync" type="hex" data="01"/>
-			<value name="StatusBar.Hide.Proc" type="hex" data="01"/>
+			<value name="StatusBar.Hide.Proc" type="hex" data="00"/>
 			<value name="StatusBar.Hide.Title" type="hex" data="01"/>
-			<value name="StatusBar.Hide.Time" type="hex" data="01"/>
+			<value name="StatusBar.Hide.Time" type="hex" data="00"/>
 			<value name="StatusBar.Hide.Resize" type="hex" data="00"/>
 			<value name="Tabs" type="hex" data="01"/>
 			<value name="TabsLocation" type="hex" data="00"/>
@@ -604,14 +604,14 @@
 			<value name="Update.PostUpdateCmd" type="string" data="echo Last successful update&gt;ConEmuUpdate.info &amp;&amp; date /t&gt;&gt;ConEmuUpdate.info &amp;&amp; time /t&gt;&gt;ConEmuUpdate.info"/>
 			<key name="Tasks" modified="2019-06-18 18:23:23" build="190526">
 				<value name="Count" type="long" data="10"/>
-				<key name="Task1" modified="2019-06-18 18:24:10" build="190526">
+				<key name="Task1" modified="2019-06-21 23:37:34" build="190526">
 					<value name="Name" type="string" data="{wsl::bash}"/>
 					<value name="Flags" type="dword" data="00000007"/>
 					<value name="Hotkey" type="dword" data="00000000"/>
 					<value name="GuiArgs" type="string" data=""/>
 					<value name="Active" type="long" data="0"/>
 					<value name="Count" type="long" data="1"/>
-					<value name="Cmd1" type="string" data='set "PATH=%ConEmuBaseDirShort%\wsl;%PATH%" &amp; %ConEmuBaseDirShort%\conemu-cyg-64.exe --wsl -C~ -cur_console:pm:/mnt'/>
+					<value name="Cmd1" type="string" data='set "PATH=%ConEmuBaseDirShort%\wsl;%PATH%" &amp; %ConEmuBaseDirShort%\conemu-cyg-64.exe --wsl -cur_console:pm:/mnt  -new_console:d:C:\Users\william\temp'/>
 				</key>
 				<key name="Task2" modified="2019-06-18 18:24:10" build="190526">
 					<value name="Name" type="string" data="{Shells::cmd}"/>
