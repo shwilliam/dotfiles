@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <key name="Software">
 	<key name="ConEmu">
-		<key name=".Vanilla" modified="2019-06-21 23:36:20" build="190526">
+		<key name=".Vanilla" modified="2019-06-23 13:13:05" build="190526">
 			<value name="StartType" type="hex" data="02"/>
 			<value name="CmdLine" type="string" data=""/>
 			<value name="StartTasksFile" type="string" data=""/>
 			<value name="StartTasksName" type="string" data="{wsl::bash}"/>
 			<value name="StartFarFolders" type="hex" data="00"/>
 			<value name="StartFarEditors" type="hex" data="00"/>
-			<value name="ColorTable00" type="dword" data="003f3f3f"/>
-			<value name="ColorTable01" type="dword" data="00af6464"/>
-			<value name="ColorTable02" type="dword" data="00008000"/>
-			<value name="ColorTable03" type="dword" data="00808000"/>
-			<value name="ColorTable04" type="dword" data="00232333"/>
-			<value name="ColorTable05" type="dword" data="00aa50aa"/>
-			<value name="ColorTable06" type="dword" data="0000dcdc"/>
-			<value name="ColorTable07" type="dword" data="00ccdcdc"/>
-			<value name="ColorTable08" type="dword" data="008080c0"/>
-			<value name="ColorTable09" type="dword" data="00ffafaf"/>
-			<value name="ColorTable10" type="dword" data="0088caf7"/>
-			<value name="ColorTable11" type="dword" data="00d3d08c"/>
-			<value name="ColorTable12" type="dword" data="007071e3"/>
-			<value name="ColorTable13" type="dword" data="00c880c8"/>
-			<value name="ColorTable14" type="dword" data="00afdff0"/>
-			<value name="ColorTable15" type="dword" data="00ffffff"/>
+			<value name="ColorTable00" type="dword" data="00181818"/>
+			<value name="ColorTable01" type="dword" data="00383838"/>
+			<value name="ColorTable02" type="dword" data="00d8d8d8"/>
+			<value name="ColorTable03" type="dword" data="004669a1"/>
+			<value name="ColorTable04" type="dword" data="005696dc"/>
+			<value name="ColorTable05" type="dword" data="00282828"/>
+			<value name="ColorTable06" type="dword" data="00b8b8b8"/>
+			<value name="ColorTable07" type="dword" data="00e8e8e8"/>
+			<value name="ColorTable08" type="dword" data="00585858"/>
+			<value name="ColorTable09" type="dword" data="00c2af7c"/>
+			<value name="ColorTable10" type="dword" data="006cb5a1"/>
+			<value name="ColorTable11" type="dword" data="00b9c186"/>
+			<value name="ColorTable12" type="dword" data="004246ab"/>
+			<value name="ColorTable13" type="dword" data="00af8bba"/>
+			<value name="ColorTable14" type="dword" data="0088caf7"/>
+			<value name="ColorTable15" type="dword" data="00f8f8f8"/>
 			<value name="TextColorIdx" type="hex" data="10"/>
 			<value name="BackColorIdx" type="hex" data="10"/>
 			<value name="PopTextColorIdx" type="hex" data="10"/>
@@ -249,8 +249,8 @@
 			<value name="ConWnd X" type="long" data="0"/>
 			<value name="ConWnd Y" type="long" data="68"/>
 			<value name="LastMonitor" type="string" data="0,68,3840,2160"/>
-			<value name="ConWnd Width" type="dword" data="0000006a"/>
-			<value name="ConWnd Height" type="dword" data="00000036"/>
+			<value name="ConWnd Width" type="dword" data="00000055"/>
+			<value name="ConWnd Height" type="dword" data="0000003e"/>
 			<value name="16bit Height" type="ulong" data="0"/>
 			<value name="Language" type="string" data="en"/>
 			<value name="StartCreateDelay" type="ulong" data="100"/>
@@ -325,8 +325,8 @@
 			<value name="Multi.Iterate" type="hex" data="01"/>
 			<value name="Multi.SplitWidth" type="hex" data="04"/>
 			<value name="Multi.SplitHeight" type="hex" data="04"/>
-			<value name="FontName" type="string" data="Consolas"/>
-			<value name="FontName2" type="string" data=""/>
+			<value name="FontName" type="string" data="Ubuntu Mono derivative Powerlin"/>
+			<value name="FontName2" type="string" data="Ubuntu Mono derivative Powerlin"/>
 			<value name="FontAutoSize" type="hex" data="00"/>
 			<value name="FontSizeX" type="ulong" data="0"/>
 			<value name="FontSizeX2" type="ulong" data="0"/>
@@ -415,7 +415,7 @@
 			<value name="FarGotoEditorPath" type="string" data='far.exe /e%1:%2 "%3"'/>
 			<value name="HighlightMouseRow" type="hex" data="00"/>
 			<value name="HighlightMouseCol" type="hex" data="00"/>
-			<value name="FixFarBorders" type="hex" data="01"/>
+			<value name="FixFarBorders" type="hex" data="00"/>
 			<value name="Anti-aliasing2" type="hex" data="00"/>
 			<value name="FixFarBordersRanges" type="string" data="2013-25C4;"/>
 			<value name="ExtendUCharMap" type="hex" data="01"/>
@@ -604,14 +604,14 @@
 			<value name="Update.PostUpdateCmd" type="string" data="echo Last successful update&gt;ConEmuUpdate.info &amp;&amp; date /t&gt;&gt;ConEmuUpdate.info &amp;&amp; time /t&gt;&gt;ConEmuUpdate.info"/>
 			<key name="Tasks" modified="2019-06-18 18:23:23" build="190526">
 				<value name="Count" type="long" data="10"/>
-				<key name="Task1" modified="2019-06-21 23:37:34" build="190526">
+				<key name="Task1" modified="2019-06-23 17:14:33" build="190526">
 					<value name="Name" type="string" data="{wsl::bash}"/>
 					<value name="Flags" type="dword" data="00000007"/>
 					<value name="Hotkey" type="dword" data="00000000"/>
 					<value name="GuiArgs" type="string" data=""/>
 					<value name="Active" type="long" data="0"/>
 					<value name="Count" type="long" data="1"/>
-					<value name="Cmd1" type="string" data='set "PATH=%ConEmuBaseDirShort%\wsl;%PATH%" &amp; %ConEmuBaseDirShort%\conemu-cyg-64.exe --wsl -cur_console:pm:/mnt  -new_console:d:C:\Users\william\temp'/>
+					<value name="Cmd1" type="string" data='set "PATH=%ConEmuBaseDirShort%\wsl;%PATH%" &amp; %ConEmuBaseDirShort%\conemu-cyg-64.exe --wsl -cur_console:pm:/mnt  -new_console:d:C:\Users\william\temp -t fish -l'/>
 				</key>
 				<key name="Task2" modified="2019-06-18 18:24:10" build="190526">
 					<value name="Name" type="string" data="{Shells::cmd}"/>
