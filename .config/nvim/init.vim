@@ -16,7 +16,10 @@ Plug 'prettier/vim-prettier'
 Plug 'w0rp/ale'
 " ^Requires eslint
 Plug 'pangloss/vim-javascript'
+Plug 'leafgarland/typescript-vim'
+" ^Requires @typescript-eslint/parser
 Plug 'mxw/vim-jsx'
+Plug 'ianks/vim-tsx'
 Plug 'Valloric/YouCompleteMe'
 Plug 'rking/ag.vim'
 call plug#end()
@@ -86,7 +89,7 @@ vnoremap <C-y> :'<,'>w %:h/
 " Theme
 set termguicolors
 colo gruvbox
-" set bg=dark
+" set bg=light
 " let ayucolor="mirage"
 " colo ayu
 " colo slate
