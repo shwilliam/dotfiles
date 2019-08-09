@@ -18,6 +18,8 @@ Plug 'w0rp/ale'
 Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim'
 " ^Requires @typescript-eslint/parser
+Plug 'posva/vim-vue'
+" ^Requires eslint-plugin-vue
 Plug 'mxw/vim-jsx'
 Plug 'ianks/vim-tsx'
 Plug 'Valloric/YouCompleteMe'
