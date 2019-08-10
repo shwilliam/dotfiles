@@ -11,6 +11,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'mattn/webapi-vim'
 Plug 'jiangmiao/auto-pairs'
+Plug 'tpope/vim-surround'
 Plug 'prettier/vim-prettier'
 " ^Requires prettier
 Plug 'w0rp/ale'
