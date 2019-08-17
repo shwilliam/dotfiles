@@ -61,13 +61,6 @@ set smartcase
 :set nu
 :set relativenumber
 
-" Mappings for moving lines and preserving indentation
-" http://vim.wikia.com/wiki/Moving_lines_up_or_down
-nnoremap <C-j> :m .+1<CR>==
-nnoremap <C-k> :m .-2<CR>==
-vnoremap <C-j> :m '>+1<CR>gv=gv
-vnoremap <C-k> :m '<-2<CR>gv=gv
-
 " Mappings for navigating split screen
 nmap <C-h> <C-w>h
 nmap <C-j> <C-w>j
@@ -86,7 +79,6 @@ vnoremap <C-y> :'<,'>w %:h/
 :command GC Gcommit -v
 :command GCA Gcommit --amend
 :command GD Gdiff
-:command GA Gwrite
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Theme
