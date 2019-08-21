@@ -3,3 +3,4 @@
 	name = William L
 [core]
 	editor = nvim
+	excludesfile = ~/.gitignore
