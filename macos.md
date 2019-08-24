@@ -9,6 +9,7 @@
 | Alfred             | productivity app & enhanced spotlight          | `brew cask install alfred`                          |
 | f.lux              | better night shift                             | `brew cask install flux`                            |
 | htop               | interactive process viewer                     | `brew install htop`                                 |
+| KeePassXC          | open-source password manager                   | `brew cask install keepassxc`                       |
 | ttygif             | record terminal session gifs                   | `brew install ttygif`                               |
 | Gifski             | convert video files to gifs                    | [app store](https://github.com/sindresorhus/Gifski) |
 | speedtest-cli      | test internet bandwidth                        | `brew install speedtest-cli`                        |
