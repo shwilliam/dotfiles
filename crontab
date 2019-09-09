@@ -1,0 +1,7 @@
+# bi-hourly time check
+0,30 * * * * osascript -e "display notification \"`date +\"\%H:\%M\"`\" with title \"🕓\""
+
+# pomodoro
+25,55 * * * * osascript -e 'display notification "💤" with title "Break" sound name "Purr"'
+0,30 * * * * osascript -e 'display notification "🔥" with title "Back to work!" sound name "Purr"'
+
