@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+	<dict>
+		<key>Label</key>
+		<string>com.shwilliam.batteryPing</string>
+		<key>ProgramArguments</key>
+    <array>
+			<string>osascript</string>
+			<string>/Users/shwilliam/scripts/battery-ping.scpt</string>
+		</array>
+		<key>StartInterval</key>
+    <integer>900</integer>
+    <key>RunAtLoad</key>
+		<true/>
+	</dict>
+</plist>
