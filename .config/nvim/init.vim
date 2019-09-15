@@ -102,8 +102,14 @@ colo gruvbox
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Linter
 nnoremap = :Prettier<CR>
+let g:ale_linters = {
+ \ 'javascript': ['eslint'],
+ \ 'typescript': ['tsserver', 'tslint'],
+ \ }
+
 let g:ale_fixers = {
- \ 'javascript': ['eslint']
+ \ 'javascript': ['eslint'],
+ \ 'typescript': ['prettier'],
  \ }
 
 " Use babylon parser with prettier
