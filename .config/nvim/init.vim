@@ -38,6 +38,8 @@ set shell=bash
 set noswapfile
 set hidden
 set autoindent
+set foldmethod=indent
+set foldlevel=2
 
 " Indent using spaces instead of tabs
 set expandtab
