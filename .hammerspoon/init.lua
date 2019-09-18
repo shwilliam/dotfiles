@@ -122,39 +122,39 @@ local function catcher(event)
   if getFlags(event, hyperStr)
     and getFlags(event, shyperModStr)
     and event:getCharacters() == windowSnap.full.key
-  then return windowSnap.full.fn()
+  then return true, {windowSnap.full.fn()}
   elseif getFlags(event, hyperStr)
     and getFlags(event, shyperModStr)
     and event:getCharacters() == windowSnap.left.key
-  then return windowSnap.left.fn()
+  then return true, {windowSnap.left.fn()}
   elseif getFlags(event, hyperStr)
     and getFlags(event, shyperModStr)
     and event:getCharacters() == windowSnap.right.key
-  then return windowSnap.right.fn()
+  then return true, {windowSnap.right.fn()}
   elseif getFlags(event, hyperStr)
     and getFlags(event, shyperModStr)
     and event:getCharacters() == windowSnap.down.key
-  then return windowSnap.down.fn()
+  then return true, {windowSnap.down.fn()}
   elseif getFlags(event, hyperStr)
     and getFlags(event, shyperModStr)
     and event:getCharacters() == windowSnap.up.key
-  then return windowSnap.up.fn()
+  then return true, {windowSnap.up.fn()}
   elseif getFlags(event, hyperStr)
     and getFlags(event, shyperModStr)
     and event:getCharacters() == windowSnap.topLeft.key
-  then return windowSnap.topLeft.fn()
+  then return true, {windowSnap.topLeft.fn()}
   elseif getFlags(event, hyperStr)
     and getFlags(event, shyperModStr)
     and event:getCharacters() == windowSnap.topRight.key
-  then return windowSnap.topRight.fn()
+  then return true, {windowSnap.topRight.fn()}
   elseif getFlags(event, hyperStr)
     and getFlags(event, shyperModStr)
     and event:getCharacters() == windowSnap.bottomLeft.key
-  then return windowSnap.bottomLeft.fn()
+  then return true, {windowSnap.bottomLeft.fn()}
   elseif getFlags(event, hyperStr)
     and getFlags(event, shyperModStr)
     and event:getCharacters() == windowSnap.bottomRight.key
-  then return windowSnap.bottomRight.fn()
+  then return true, {windowSnap.bottomRight.fn()}
 
   -- listen for mouse movement
   elseif event:getFlags()[hyperStr] and event:getCharacters() == mouseMvmnt.left.key then
