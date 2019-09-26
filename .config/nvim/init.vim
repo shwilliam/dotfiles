@@ -1,21 +1,24 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Plugins (managed with `junegunn/vim-plug`) 
+" Plugins (managed with `junegunn/vim-plug`)
 call plug#begin('~/.vim/plugs')
-Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-vividchalk'
+Plug 'scrooloose/nerdtree'
 Plug 'kien/ctrlp.vim'
 Plug 'vim-ctrlspace/vim-ctrlspace'
-Plug 'morhetz/gruvbox'
-" Plug 'ayu-theme/ayu-vim'
-Plug 'itchyny/lightline.vim'
-Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+Plug 'zivyangll/git-blame.vim'
+Plug 'rking/ag.vim'
+Plug 'mileszs/ack.vim'
+Plug 'Valloric/YouCompleteMe'
+" ^Follow https://github.com/ycm-core/YouCompleteMe#installation
 Plug 'mattn/webapi-vim'
-Plug 'jiangmiao/auto-pairs'
-Plug 'tpope/vim-surround'
-Plug 'prettier/vim-prettier'
-" ^Requires prettier
 Plug 'w0rp/ale'
 " ^Requires eslint
+Plug 'prettier/vim-prettier'
+" ^Requires prettier
 Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim'
 " ^Requires @typescript-eslint/parser
@@ -23,15 +26,14 @@ Plug 'posva/vim-vue'
 " ^Requires eslint-plugin-vue
 Plug 'mxw/vim-jsx'
 Plug 'ianks/vim-tsx'
-Plug 'Valloric/YouCompleteMe'
-Plug 'rking/ag.vim'
+Plug 'itchyny/lightline.vim'
+Plug 'morhetz/gruvbox'
+Plug 'vim-scripts/wombat256.vim'
+" Plug 'sjl/badwolf'
 call plug#end()
- 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" General 
-noremap <space> :
-let mapleader=","
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" General
 set nocompatible
 set fileformat=unix
 set shell=bash
@@ -40,15 +42,9 @@ set hidden
 set autoindent
 set foldmethod=indent
 set foldlevel=2
-
-" Indent using spaces instead of tabs
 set expandtab
-
-" The number of spaces to use for each indent
 set shiftwidth=2
 set tabstop=2
-
-" Number of spaces to use for a <Tab> during editing operations
 set softtabstop=2
 
 " Highlight search matches
@@ -63,30 +59,62 @@ set smartcase
 :set nu
 :set relativenumber
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" General mappings
+noremap ; :
+noremap <Tab> %
+
+" Leader mappings
+let mapleader=","
+nmap <space> ,
+noremap <leader>w :w<CR>
+noremap <leader>wq :wq<CR>
+noremap <leader>q :q<CR>
+noremap <leader>q! :q!<CR>
+noremap <leader>qa :qa<CR>
+noremap <leader>qa! :qa!<CR>
+noremap <leader>h ^
+noremap <leader>l $
+noremap <leader>H :tabp<CR>
+noremap <leader>L :tabn<CR>
+noremap <leader>j }
+noremap <leader>k {
+noremap <leader>r :%s/
+" unhighlight search matches
+noremap <leader>/ :noh<CR>
+nnoremap <Leader>a :Ack!<Space>-i<Space>--ignore-dir={node_modules,.cache,public,build,dist}<Space>--ignore-file=match:/-lock.json/<Space>
+nmap <leader>c gcc
+noremap <leader>b :b#<CR>
+noremap <leader>t :NERDTreeToggle<CR>
+noremap <leader>g :Gstatus<CR>
+nnoremap <Leader>G :<C-u>call gitblame#echo()<CR>
+noremap <leader>o :CtrlSpace<CR>
+noremap <leader>p :CtrlP<CR>
+noremap <leader>P :Prettier<CR>
+
 " Mappings for navigating split screen
 nmap <C-h> <C-w>h
 nmap <C-j> <C-w>j
 nmap <C-k> <C-w>k
 nmap <C-l> <C-w>l
 
+" Mappings for navigating tabs
+noremap ,, :tabp<CR>
+noremap .. :tabn<CR>
+
 " `jj` to exit insert
 :imap jj <Esc>
-
-" Quick copy to new file 
-vnoremap <C-y> :'<,'>w %:h/
 
 " Move lines
 nnoremap ∆ :m .+1<CR>==
 nnoremap ˚ :m .-2<CR>==
-
 inoremap ∆ <Esc>:m .+1<CR>==gi
 inoremap ˚ <Esc>:m .-2<CR>==gi
-
 vnoremap ∆ :m '>+1<CR>gv=gv
 vnoremap ˚ :m '<-2<CR>gv=gv
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Git mappings
+" Git commands
 :command GS Gstatus
 :command GC Gcommit -v
 :command GCA Gcommit --amend
@@ -95,59 +123,30 @@ vnoremap ˚ :m '<-2<CR>gv=gv
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Theme
 set termguicolors
+set bg=dark
 colo gruvbox
-" set bg=light
-" let ayucolor="mirage"
-" colo ayu
-" colo slate
- 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Linter
-nnoremap = :Prettier<CR>
-let g:ale_linters = {
- \ 'javascript': ['eslint'],
- \ 'typescript': ['tsserver', 'tslint'],
+" colo wombat256mod
+" colo vividchalk
+" colo badwolf
+
+set colorcolumn=71
+
+" Inserts easy-to-read chars at tabs and trailing spaces
+exec "set listchars=tab:\uBB\uBB,trail:\uB7,nbsp:~"
+set list
+
+let g:lightline = {
+ \    'colorscheme': 'wombat',
+ \    'active': {
+ \      'left': [
+ \        [ 'mode', 'paste' ],
+ \      [ 'gitbranch', 'readonly', 'filename', 'modified' ]
+ \    ]
+ \  },
+ \    'component_function': {
+ \    'gitbranch': 'fugitive#head'
+ \  },
  \ }
-
-let g:ale_fixers = {
- \ 'javascript': ['eslint'],
- \ 'typescript': ['prettier'],
- \ }
-
-" Use babylon parser with prettier
-let g:prettier#config#parser="babylon"
-
-" Run prettier asynchronously before saving
-let g:prettier#autoformat=0
-autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md PrettierAsync
-
-" Use JSON in .babelrc files
-autocmd BufRead,BufNewFile .babelrc setfiletype json
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" React
-" Allow JSX in .js files
-let g:jsx_ext_required=0
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" CtrlP
-let g:ctrlp_map='<c-p>'
-let g:ctrlp_cmd='CtrlP'
-
-" Excluded dirs
-let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" CtrlSpace 
-let g:CtrlSpaceDefaultMappingKey = "<C-space> "
-
-noremap ,, :tabp <CR>
-noremap .. :tabn <CR>
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Ag 
-let g:ag_working_path_mode="r"
-noremap // :Ag 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Autocomplete
@@ -162,3 +161,47 @@ set omnifunc=syntaxcomplete#Complete
 " NERDTree
 let NERDTreeShowHidden=1
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Linter
+nnoremap = :Prettier<CR>
+let g:ale_linters = {
+ \  'javascript': ['eslint'],
+ \  'typescript': ['tsserver', 'tslint'],
+ \ }
+
+let g:ale_fixers = {
+ \  'javascript': ['eslint'],
+ \  'typescript': ['prettier'],
+ \ }
+
+" Use babylon parser with prettier
+let g:prettier#config#parser="babylon"
+
+" Run prettier asynchronously before saving
+let g:prettier#autoformat=0
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md PrettierAsync
+
+" Use JSON in .babelrc files
+autocmd BufRead,BufNewFile .babelrc setfiletype json
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" CtrlP
+let g:ctrlp_map='<c-p>'
+let g:ctrlp_cmd='CtrlP'
+
+" Excluded dirs
+let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard', 'node_modules/']
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" CtrlSpace
+let g:CtrlSpaceDefaultMappingKey = "<C-space> "
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Ack
+cnoreabbrev Ack Ack!
+noremap // :Ack!<Space>-i<Space>--ignore-dir={node_modules,.cache,public,build,dist}<Space>--ignore-file=match:/-lock.json/<Space>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" React
+" Allow JSX in .js files
+let g:jsx_ext_required=0
