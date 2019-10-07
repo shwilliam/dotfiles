@@ -1,3 +1,5 @@
+require('caps')
+
 --[ modifier keys ]
 hyper = {'cmd'}
 hyperStr = 'cmd'
