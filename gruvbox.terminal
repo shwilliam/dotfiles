@@ -66,17 +66,17 @@
 	<data>
 	YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0b3BYJG9iamVjdHMS
 	AAGGoF8QD05TS2V5ZWRBcmNoaXZlctEICVRyb290gAGkCwwVFlUkbnVsbNQNDg8QERIT
-	FFZOU1NpemVYTlNmRmxhZ3NWTlNOYW1lViRjbGFzcyNAMAAAAAAAABAQgAKAA18QFVNv
-	dXJjZUNvZGVQcm8tUmVndWxhctIXGBkaWiRjbGFzc25hbWVYJGNsYXNzZXNWTlNGb250
-	ohkbWE5TT2JqZWN0CBEaJCkyN0lMUVNYXmdud36FjpCSlKyxvMXMzwAAAAAAAAEBAAAA
-	AAAAABwAAAAAAAAAAAAAAAAAAADY
+	FFZOU1NpemVYTlNmRmxhZ3NWTlNOYW1lViRjbGFzcyNALgAAAAAAABAQgAKAA18QHlJv
+	Ym90b01vbm9Gb3JQb3dlcmxpbmUtUmVndWxhctIXGBkaWiRjbGFzc25hbWVYJGNsYXNz
+	ZXNWTlNGb250ohkbWE5TT2JqZWN0CBEaJCkyN0lMUVNYXmdud36FjpCSlLW6xc7V2AAA
+	AAAAAAEBAAAAAAAAABwAAAAAAAAAAAAAAAAAAADh
 	</data>
 	<key>FontAntialias</key>
 	<true/>
 	<key>FontHeightSpacing</key>
-	<real>0.90000000000000002</real>
+	<real>1.122221256684492</real>
 	<key>FontWidthSpacing</key>
-	<real>0.90000000000000002</real>
+	<real>1</real>
 	<key>ProfileCurrentVersion</key>
 	<real>2.0699999999999998</real>
 	<key>RunCommandAsShell</key>
@@ -121,6 +121,8 @@
 	<key>ShowRepresentedURLInTabTitle</key>
 	<false/>
 	<key>ShowRepresentedURLInTitle</key>
+	<false/>
+	<key>ShowRepresentedURLPathInTitle</key>
 	<false/>
 	<key>StrictVTKeypad</key>
 	<false/>

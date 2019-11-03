@@ -5,15 +5,12 @@
 | Alfred             | productivity app & enhanced spotlight          | `brew cask install alfred`                          |
 | BetterTouchTool    | customize touch bar, shortcuts, gestures, etc. | [link](https://folivora.ai/)                        |
 | Chrome             | for testing                                    | `brew cask install google-chrome`                   |
-| colorpicker        | color picker                                   | [link](https://github.com/Toinane/colorpicker)      |
 | Dash               | offline docs                                   | `brew cask install dash`                            |
 | Firefox            | the better browser (developer edition)         | `brew cask install firefox-developer-edition`       |
-| f.lux              | better night shift                             | `brew cask install flux`                            |
 | Gifski             | convert video files to gifs                    | [app store](https://github.com/sindresorhus/Gifski) |
 | GIMP               | raster graphics editor                         | `brew cask install gimp`                            |
 | Hammerspoon        | osx automation and keyboard bindings           | `brew cask install hammerspoon`                     |
 | htop               | interactive process viewer                     | `brew install htop`                                 |
-| iTerm2             | terminal replacement                           | `brew cask install iterm`                           |
 | KeePassXC          | open-source password manager                   | `brew cask install keepassxc`                       |
 | LibreOffice        | open-source office suite                       | `brew cask install libreoffice`                     |
 | MAMP               | local LAMP stack                               | `brew cask install mamp`                            |
