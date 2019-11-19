@@ -1,34 +1,35 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugins (managed with `junegunn/vim-plug`)
 call plug#begin('~/.vim/plugs')
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-surround'
-
-Plug 'tpope/vim-fugitive'
-
-Plug 'scrooloose/nerdtree'
 Plug 'kien/ctrlp.vim'
 Plug 'vim-ctrlspace/vim-ctrlspace'
 
-Plug 'airblade/vim-gitgutter'
-Plug 'zivyangll/git-blame.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
 
 Plug 'mileszs/ack.vim'
-
-" requires prettier install
-Plug 'prettier/vim-prettier'
-
-Plug 'mxw/vim-jsx'
 
 " autocomplete/suggest
 " requires language extensions
 " eg. `:CocInstall coc-tsserver coc-json coc-html coc-css`
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-" syntax highlight ts
-Plug 'HerringtonDarkholme/yats.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+Plug 'zivyangll/git-blame.vim'
+
+" requires prettier install
+Plug 'prettier/vim-prettier'
 
 Plug 'rizzatti/dash.vim'
+
+Plug 'mxw/vim-jsx'
+
+" syntax highlight ts
+Plug 'HerringtonDarkholme/yats.vim'
 
 Plug 'itchyny/lightline.vim'
 Plug 'morhetz/gruvbox'
@@ -98,10 +99,10 @@ noremap <leader>d :Dash<CR>
 noremap <leader>D :Dash!<CR>
 
 " navigate split
-nmap <C-h> <C-w>h
-nmap <C-j> <C-w>j
-nmap <C-k> <C-w>k
-nmap <C-l> <C-w>l
+nmap <C-H> <C-w>h
+nmap <C-J> <C-w>j
+nmap <C-K> <C-w>k
+nmap <C-L> <C-w>l
 
 " navigate tabs
 noremap ,, :tabp<CR>
@@ -169,6 +170,19 @@ let g:lightline = {
 " NERDTree
 let NERDTreeShowHidden=1
 let NERDTreeIgnore=['^node_modules$']
+
+let g:NERDTreeIndicatorMapCustom = {
+    \ "Modified"  : "M",
+    \ "Staged"    : "✚",
+    \ "Untracked" : "U",
+    \ "Renamed"   : "R",
+    \ "Unmerged"  : "═",
+    \ "Deleted"   : "D",
+    \ "Dirty"     : "✗",
+    \ "Clean"     : "✔︎",
+    \ 'Ignored'   : 'I',
+    \ "Unknown"   : "?"
+    \ }
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Linter
