@@ -1,0 +1,12 @@
+# /Users/shwilliam/.config/tmuxinator/dev.yml
+
+name: dev
+root: ./
+
+windows:
+  - editor:
+      layout: main-horizontal
+      panes:
+        - vim ./
+        - 
+        - 
