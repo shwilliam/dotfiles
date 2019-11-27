@@ -9,6 +9,7 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
+Plug 'terryma/vim-multiple-cursors'
 
 Plug 'mileszs/ack.vim'
 
@@ -32,9 +33,10 @@ Plug 'mxw/vim-jsx'
 Plug 'HerringtonDarkholme/yats.vim'
 
 Plug 'itchyny/lightline.vim'
+
 Plug 'morhetz/gruvbox'
-Plug 'nanotech/jellybeans.vim'
 " Plug 'vim-scripts/wombat256.vim'
+" Plug 'nanotech/jellybeans.vim'
 " Plug 'sjl/badwolf'
 " Plug 'tpope/vim-vividchalk'
 call plug#end()
@@ -64,9 +66,9 @@ set smartcase
 " set ignorecase
 
 " line numbers
-:set number
-:set nu
-:set relativenumber
+set number
+set nu
+set relativenumber
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General mappings
@@ -109,7 +111,7 @@ noremap ,, :tabp<CR>
 noremap .. :tabn<CR>
 
 " `jj` to exit insert
-:imap jj <Esc>
+imap jj <Esc>
 
 " move lines
 nnoremap ∆ :m .+1<CR>==
@@ -121,27 +123,27 @@ vnoremap ˚ :m '<-2<CR>gv=gv
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Git
-:command GS Gstatus
-:command GC Gcommit -v
-:command GCA Gcommit --amend
-:command GD Gdiff
+command GS Gstatus
+command GC Gcommit -v
+command GCA Gcommit --amend
+command GD Gdiff
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Theme
 set termguicolors
-set bg=dark
 
-" colo gruvbox
-" let g:gruvbox_contast_dark = 'soft'
+colo gruvbox
+" set bg=dark
+let g:gruvbox_contast_dark = 'soft'
 
-let g:jellybeans_overrides = {
-\    'Todo': { 'guifg': '000000', 'guibg': '83a598',
-\              'ctermfg': '000000', 'ctermbg': '83a598',
-\              'attr': 'bold' },
-\    'Comment': { 'guifg': '458588' },
-\    'background': { 'guibg': '282828' },
-\}
-colo jellybeans
+" let g:jellybeans_overrides = {
+" \    'Todo': { 'guifg': '000000', 'guibg': '83a598',
+" \              'ctermfg': '000000', 'ctermbg': '83a598',
+" \              'attr': 'bold' },
+" \    'Comment': { 'guifg': '458588' },
+" \    'background': { 'guibg': '282828' },
+" \}
+" colo jellybeans
 
 " colo wombat256mod
 " colo badwolf
@@ -187,10 +189,10 @@ let g:NERDTreeIndicatorMapCustom = {
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Linter
 nnoremap = :Prettier<CR>
-let g:prettier#config#parser="babylon"
+let g:prettier#config#parser="typescript"
 " run on save
 let g:prettier#autoformat=0
-autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md PrettierAsync
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.css,*.less,*.scss,*.json,*.graphql,*.md PrettierAsync
 
 " JSON for .babelrc files
 autocmd BufRead,BufNewFile .babelrc setfiletype json
@@ -308,3 +310,13 @@ function! s:check_back_space() abort
 endfunction
 
 let g:coc_snippet_next = '<tab>'
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Multi-cursor
+let g:multi_cursor_use_default_mapping=0
+
+let g:multi_cursor_start_word_key      = '<C-n>'
+let g:multi_cursor_next_key            = '<C-n>'
+let g:multi_cursor_prev_key            = '<C-m>'
+" let g:multi_cursor_skip_key            = '<C-x>'
+let g:multi_cursor_quit_key            = '<Esc>'

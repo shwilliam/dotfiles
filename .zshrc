@@ -1,6 +1,8 @@
 alias v=nvim
 alias vi=nvim
 alias vim=nvim
+alias t=tmuxinator
+alias todo="nvim ~/todo"
 
 export ZSH="/Users/shwilliam/.oh-my-zsh"
 
@@ -39,4 +41,3 @@ export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
-
