@@ -1,0 +1,66 @@
+snippet cl "console.log()"
+console.log($1)
+endsnippet
+
+snippet if "If statement" b
+if ($1) {
+  $2
+}
+endsnippet
+
+snippet rc "React component" b
+import React from 'react'
+
+const $1 = props => (
+  <$2 {...props}>
+    $3
+  </$2>
+)
+
+export default $1
+endsnippet
+
+snippet rcc "React wrapper component" b
+import React from 'react'
+
+const $1 = ({children, ...props}) => (
+  <$2 {...props}>
+    {children}
+  </$2>
+)
+
+export default $1
+endsnippet
+
+snippet rcs "React component w/ state" b
+import React, {useState} from 'react'
+
+const $1 = props => {
+  const [$2, set$2] = useState($3)
+
+  return (
+    <$4 {...props}>
+      $5
+    </$4>
+  )
+}
+
+export default $1
+endsnippet
+
+snippet rccs "React wrapper component w/ state" b
+import React, {useState} from 'react'
+
+const $1 = ({children, ...props}) => {
+  const [$2, set$2] = useState($3)
+
+  return (
+    <$4 {...props}>
+      {children}
+    </$4>
+  )
+}
+
+export default $1
+endsnippet
+
