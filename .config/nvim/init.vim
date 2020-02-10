@@ -5,7 +5,7 @@ Plug 'kien/ctrlp.vim'
 Plug 'vim-ctrlspace/vim-ctrlspace'
 
 Plug 'scrooloose/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
+" Plug 'Xuyuanp/nerdtree-git-plugin'
 
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
@@ -35,6 +35,9 @@ Plug 'HerringtonDarkholme/yats.vim'
 Plug 'itchyny/lightline.vim'
 
 Plug 'morhetz/gruvbox'
+Plug 'flazz/vim-colorschemes'
+Plug 'felixhummel/setcolors.vim'
+
 " Plug 'vim-scripts/wombat256.vim'
 " Plug 'nanotech/jellybeans.vim'
 " Plug 'sjl/badwolf'
@@ -173,18 +176,18 @@ let g:lightline = {
 let NERDTreeShowHidden=1
 let NERDTreeIgnore=['^node_modules$']
 
-let g:NERDTreeIndicatorMapCustom = {
-    \ "Modified"  : "M",
-    \ "Staged"    : "✚",
-    \ "Untracked" : "U",
-    \ "Renamed"   : "R",
-    \ "Unmerged"  : "═",
-    \ "Deleted"   : "D",
-    \ "Dirty"     : "✗",
-    \ "Clean"     : "✔︎",
-    \ 'Ignored'   : 'I',
-    \ "Unknown"   : "?"
-    \ }
+" let g:NERDTreeIndicatorMapCustom = {
+"     \ "Modified"  : "M",
+"     \ "Staged"    : "✚",
+"     \ "Untracked" : "U",
+"     \ "Renamed"   : "R",
+"     \ "Unmerged"  : "═",
+"     \ "Deleted"   : "D",
+"     \ "Dirty"     : "✗",
+"     \ "Clean"     : "✔︎",
+"     \ 'Ignored'   : 'I',
+"     \ "Unknown"   : "?"
+"     \ }
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Linter
@@ -320,3 +323,4 @@ let g:multi_cursor_next_key            = '<C-n>'
 let g:multi_cursor_prev_key            = '<C-m>'
 " let g:multi_cursor_skip_key            = '<C-x>'
 let g:multi_cursor_quit_key            = '<Esc>'
+

@@ -52,10 +52,16 @@ function bg {
   brew services restart yabai
 }
 
-function paint {
+function paintl {
   local CURRENT_WALLPAPER="$(osascript -e 'tell app "Finder" to get posix path of (get desktop picture as alias)')"
   wal -i $CURRENT_WALLPAPER -n -l
 }
 
+function paint {
+  local CURRENT_WALLPAPER="$(osascript -e 'tell app "Finder" to get posix path of (get desktop picture as alias)')"
+  wal -i $CURRENT_WALLPAPER -n
+}
+
 paint
 
+nvm use 12.13.1
