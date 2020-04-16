@@ -40,28 +40,10 @@ export NVM_DIR="$HOME/.nvm"
 export PATH="${PATH}:${HOME}/Library/Python/3.7/bin"
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 
-function bg {
-  local WALLPAPER_DIR="$HOME/Pictures/desktop"
-  local WALLPAPER=$(find $WALLPAPER_DIR -type f -maxdepth 1 | shuf -n1)
-
-  # local CURRENT_WALLPAPER="$(osascript -e 'tell app "finder" to get posix path of (get desktop picture as alias)')"
-
-  osascript -e "tell application \"Finder\" to set desktop picture to POSIX file \"$WALLPAPER\""
-
-  wal -i $WALLPAPER -n -l
-  brew services restart yabai
-}
-
-function paintl {
-  local CURRENT_WALLPAPER="$(osascript -e 'tell app "Finder" to get posix path of (get desktop picture as alias)')"
-  wal -i $CURRENT_WALLPAPER -n -l
-}
-
-function paint {
-  local CURRENT_WALLPAPER="$(osascript -e 'tell app "Finder" to get posix path of (get desktop picture as alias)')"
-  wal -i $CURRENT_WALLPAPER -n
-}
-
-paint
+export ANDROID_HOME="$HOME/Library/Android/sdk"
+export PATH="$PATH:$ANDROID_HOME/emulator"
+export PATH="$PATH:$ANDROID_HOME/tools"
+export PATH="$PATH:$ANDROID_HOME/tools/bin"
+export PATH="$PATH:$ANDROID_HOME/platform-tools"
 
 nvm use 12.13.1

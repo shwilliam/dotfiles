@@ -11,56 +11,48 @@ endsnippet
 snippet rc "React component" b
 import React from 'react'
 
-const $1 = props => (
+export const $1 = props => (
   <$2 {...props}>
     $3
   </$2>
 )
-
-export default $1
 endsnippet
 
 snippet rcc "React wrapper component" b
 import React from 'react'
 
-const $1 = ({children, ...props}) => (
-  <$2 {...props}>
+export const $1 = ({children}) => (
+  <$2>
     {children}
   </$2>
 )
-
-export default $1
 endsnippet
 
 snippet rcs "React component w/ state" b
 import React, {useState} from 'react'
 
-const $1 = props => {
+export const $1 = () => {
   const [$2, set$2] = useState($3)
 
   return (
-    <$4 {...props}>
+    <$4>
       $5
     </$4>
   )
 }
-
-export default $1
 endsnippet
 
 snippet rccs "React wrapper component w/ state" b
 import React, {useState} from 'react'
 
-const $1 = ({children, ...props}) => {
+export const $1 = ({children}) => {
   const [$2, set$2] = useState($3)
 
   return (
-    <$4 {...props}>
+    <$4>
       {children}
     </$4>
   )
 }
-
-export default $1
 endsnippet
 

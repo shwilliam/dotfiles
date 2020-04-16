@@ -9,7 +9,7 @@ Plug 'scrooloose/nerdtree'
 
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
-Plug 'terryma/vim-multiple-cursors'
+" Plug 'terryma/vim-multiple-cursors'
 
 Plug 'mileszs/ack.vim'
 
@@ -35,13 +35,11 @@ Plug 'HerringtonDarkholme/yats.vim'
 Plug 'itchyny/lightline.vim'
 
 Plug 'morhetz/gruvbox'
-Plug 'flazz/vim-colorschemes'
-Plug 'felixhummel/setcolors.vim'
-
-" Plug 'vim-scripts/wombat256.vim'
-" Plug 'nanotech/jellybeans.vim'
-" Plug 'sjl/badwolf'
-" Plug 'tpope/vim-vividchalk'
+Plug 'robertmeta/nofrils'
+Plug 'jaredgorski/fogbell.vim'
+Plug 'arcticicestudio/nord-vim'
+" Plug 'flazz/vim-colorschemes'
+" Plug 'felixhummel/setcolors.vim'
 call plug#end()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -93,7 +91,6 @@ noremap <leader>l $
 noremap <leader>R :%s/
 " unhighlight search matches
 noremap <leader>/ :noh<CR>
-nnoremap <leader>a :Ack!<Space>-i<Space>--ignore-dir={node_modules,.cache,public,build,dist}<Space>--ignore-file=match:/-lock.json/<Space>
 nmap <leader>c gcc
 noremap <leader>b :b#<CR>
 noremap <leader>t :NERDTreeToggle<CR>
@@ -102,6 +99,7 @@ nnoremap <leader>G :<C-u>call gitblame#echo()<CR>
 noremap <leader>P :Prettier<CR>
 noremap <leader>d :Dash<CR>
 noremap <leader>D :Dash!<CR>
+noremap <leader>O :OR<CR>
 
 " navigate split
 nmap <C-H> <C-w>h
@@ -135,41 +133,36 @@ command GD Gdiff
 " Theme
 set termguicolors
 
-colo gruvbox
+" colo fogbell_lite
+" colo nofrils-dark
+
+" colo gruvbox
 " set bg=dark
-let g:gruvbox_contast_dark = 'soft'
 
-" let g:jellybeans_overrides = {
-" \    'Todo': { 'guifg': '000000', 'guibg': '83a598',
-" \              'ctermfg': '000000', 'ctermbg': '83a598',
-" \              'attr': 'bold' },
-" \    'Comment': { 'guifg': '458588' },
-" \    'background': { 'guibg': '282828' },
-" \}
-" colo jellybeans
+colo nord
 
-" colo wombat256mod
-" colo badwolf
-" colo vividchalk
-
-set colorcolumn=71
+set colorcolumn=81
 
 " insert chars at tabs and trailing spaces
 exec "set listchars=tab:\uBB\uBB,trail:\uB7,nbsp:~"
 set list
 
 let g:lightline = {
- \    'colorscheme': 'jellybeans',
+ \    'colorscheme': 'PaperColor',
  \    'active': {
  \      'left': [
  \        [ 'mode', 'paste' ],
- \      [ 'gitbranch', 'readonly', 'filename', 'modified' ]
- \    ]
- \  },
+ \        [ 'gitbranch', 'readonly', 'filename', 'modified' ],
+ \      ],
+ \      'right': [
+ \        [ 'lineinfo' ],
+ \        [ 'fileformat', 'fileencoding'],
+ \      ],
+ \    },
  \    'component_function': {
- \    'gitbranch': 'fugitive#head'
- \  },
- \ }
+ \      'gitbranch': 'fugitive#head'
+ \    },
+ \  }
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NERDTree
@@ -253,7 +246,7 @@ inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 " gotos
 nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gt <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
@@ -288,9 +281,9 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 " find in current document
-nnoremap <silent> <space>s  :<C-u>CocList outline<cr>
+" nnoremap <silent> <space>s  :<C-u>CocList outline<cr>
 " find in workspace
-nnoremap <silent> <space>S  :<C-u>CocList -I symbols<cr>
+" nnoremap <silent> <space>S  :<C-u>CocList -I symbols<cr>
 
 let g:coc_global_extensions = [
   \ 'coc-snippets',
@@ -299,6 +292,10 @@ let g:coc_global_extensions = [
   \ 'coc-tsserver',
   \ 'coc-eslint',
   \ 'coc-prettier',
+  \ 'coc-html',
+  \ 'coc-emmet',
+  \ 'coc-css',
+  \ 'coc-markdownlint',
 \ ]
 
 inoremap <silent><expr> <TAB>
@@ -316,11 +313,134 @@ let g:coc_snippet_next = '<tab>'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Multi-cursor
-let g:multi_cursor_use_default_mapping=0
+" let g:multi_cursor_use_default_mapping=0
 
-let g:multi_cursor_start_word_key      = '<C-n>'
-let g:multi_cursor_next_key            = '<C-n>'
-let g:multi_cursor_prev_key            = '<C-m>'
+" let g:multi_cursor_start_word_key      = '<C-n>'
+" let g:multi_cursor_next_key            = '<C-n>'
+" let g:multi_cursor_prev_key            = '<C-m>'
 " let g:multi_cursor_skip_key            = '<C-x>'
-let g:multi_cursor_quit_key            = '<Esc>'
+" let g:multi_cursor_quit_key            = '<Esc>'
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Color scheme toggle
+" Set the list of color schemes used by the above (default is 'all'):
+"   :SetColors all              (all $VIMRUNTIME/colors/*.vim)
+"   :SetColors my               (names built into script)
+"   :SetColors blue slate ron   (these schemes)
+"   :SetColors                  (display current scheme names)
+"   :SetColors now              (set scheme based on time of day)
+if v:version < 700 || exists('loaded_setcolors') || &cp
+  finish
+endif
+
+let loaded_setcolors = 1
+let s:mycolors = ['gruvbox', 'fogbell', 'fogbell_light', 'nofrils-dark', 'nofrils-light', 'nofrils-sepia']  " colorscheme names that we use to set color
+" let s:mycolors = uniq(sort(map(paths, 'fnamemodify(v:val, ":t:r")')))
+let paths = split(globpath(&runtimepath, 'colors/*.vim'), "\n")
+
+" Set list of color scheme names that we will use, except
+" argument 'now' actually changes the current color scheme.
+function! s:SetColors(args)
+  if len(a:args) == 0
+    echo 'Current color scheme names:'
+    let i = 0
+    while i < len(s:mycolors)
+      echo '  '.join(map(s:mycolors[i : i+4], 'printf("%-14s", v:val)'))
+      let i += 5
+    endwhile
+  elseif a:args == 'all'
+    let paths = split(globpath(&runtimepath, 'colors/*.vim'), "\n")
+    let s:mycolors = uniq(sort(map(paths, 'fnamemodify(v:val, ":t:r")')))
+    echo 'List of colors set from all installed color schemes'
+  elseif a:args == 'my'
+    let c1 = 'default elflord peachpuff desert256 breeze morning'
+    let c2 = 'darkblue gothic aqua earth black_angus relaxedgreen'
+    let c3 = 'darkblack freya motus impact less chocolateliquor'
+    let s:mycolors = split(c1.' '.c2.' '.c3)
+    echo 'List of colors set from built-in names'
+  elseif a:args == 'now'
+    call s:HourColor()
+  else
+    let s:mycolors = split(a:args)
+    echo 'List of colors set from argument (space-separated names)'
+  endif
+endfunction
+
+command! -nargs=* SetColors call s:SetColors('<args>')
+
+" Set next/previous/random (how = 1/-1/0) color from our list of colors.
+" The 'random' index is actually set from the current time in seconds.
+" Global (no 's:') so can easily call from command line.
+function! NextColor(how)
+  call s:NextColor(a:how, 1)
+endfunction
+
+" Helper function for NextColor(), allows echoing of the color name to be
+" disabled.
+function! s:NextColor(how, echo_color)
+  if len(s:mycolors) == 0
+    call s:SetColors('all')
+  endif
+  if exists('g:colors_name')
+    let current = index(s:mycolors, g:colors_name)
+  else
+    let current = -1
+  endif
+  let missing = []
+  let how = a:how
+  for i in range(len(s:mycolors))
+    if how == 0
+      let current = localtime() % len(s:mycolors)
+      let how = 1  " in case random color does not exist
+    else
+      let current += how
+      if !(0 <= current && current < len(s:mycolors))
+        let current = (how>0 ? 0 : len(s:mycolors)-1)
+      endif
+    endif
+    try
+      execute 'colorscheme '.s:mycolors[current]
+      break
+    catch /E185:/
+      call add(missing, s:mycolors[current])
+    endtry
+  endfor
+  redraw
+  if len(missing) > 0
+    echo 'Error: colorscheme not found:' join(missing)
+  endif
+  if (a:echo_color)
+    echo g:colors_name
+  endif
+endfunction
+
+" Set color scheme according to current time of day.
+function! s:HourColor()
+  let hr = str2nr(strftime('%H'))
+  if hr <= 3
+    let i = 0
+  elseif hr <= 7
+    let i = 1
+  elseif hr <= 14
+    let i = 2
+  elseif hr <= 18
+    let i = 3
+  else
+    let i = 4
+  endif
+  let nowcolors = 'elflord morning desert evening pablo'
+  execute 'colorscheme '.split(nowcolors)[i]
+  redraw
+  echo g:colors_name
+endfunction
+
+" next
+" nnoremap <F8> :call NextColor(1)<CR>
+noremap <leader>1 :call NextColor(1)<CR>
+" prev
+" nnoremap <S-F8> :call NextColor(-1)<CR>
+noremap <leader>2 :call NextColor(-1)<CR>
+" random
+" nnoremap <A-F8> :call NextColor(0)<CR>
+noremap <leader>3 :call NextColor(0)<CR>
 

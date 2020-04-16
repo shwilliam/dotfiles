@@ -8,7 +8,8 @@ yabai -m config status_bar_text_font         "Menlo:Bold:12.0"
 # yabai -m config status_bar_foreground_color  0xffa8a8a8
 
 # yabai -m config status_bar_space_icon_strip  I II III IV V VI VII VIII IX X
-yabai -m config status_bar_space_icon_strip  🌼 🌸 🌺 [4] [5] [6] [7] [8] [9] [10]
+yabai -m config status_bar_space_icon_strip  [1] [2] [3] [4] [5] [6] [7] [8] [9] [10]
+# yabai -m config status_bar_space_icon_strip  🌼 🌸 🌺 [4] [5] [6] [7] [8] [9] [10]
 # yabai -m config status_bar_power_icon_strip  ?
 # yabai -m config status_bar_space_icon        ?
 # yabai -m config status_bar_clock_icon        ?
@@ -24,9 +25,9 @@ yabai -m config window_shadow                off
 yabai -m config window_border                on
 # yabai -m config window_border_placement      interior
 yabai -m config window_border_placement      inset
-yabai -m config window_border_width          5
+yabai -m config window_border_width          2
 # yabai -m config window_border_radius         2.75
-yabai -m config window_border_radius         0
+yabai -m config window_border_radius         0.5
 yabai -m config active_window_border_topmost off
 # yabai -m config active_window_border_color   0xff775759
 # yabai -m config normal_window_border_color   0xff505050
@@ -46,25 +47,30 @@ yabai -m config layout                       bsp
 # yabai -m config left_padding                 15
 # yabai -m config right_padding                15
 # yabai -m config window_gap                   15
-yabai -m config top_padding                  25
-yabai -m config bottom_padding               25
-yabai -m config left_padding                 25
-yabai -m config right_padding                25
-yabai -m config window_gap                   25
+# yabai -m config top_padding                  25
+# yabai -m config bottom_padding               25
+# yabai -m config left_padding                 25
+# yabai -m config right_padding                25
+# yabai -m config window_gap                   25
+yabai -m config top_padding                  0
+yabai -m config bottom_padding               0
+yabai -m config left_padding                 0
+yabai -m config right_padding                0
+yabai -m config window_gap                   0
 
 # pywal scheme
-source ~/.cache/wal/colors.sh
+# source ~/.cache/wal/colors.sh
 
-CBACK=$(echo $background | sed 's/#//')
-CFORE=$(echo $foreground | sed 's/#//')
-CACTV=$(echo $color3 | sed 's/#//')
-CNORM=$(echo $color1 | sed 's/#//')
-CINSE=$(echo $foreground | sed 's/#//')
+# CBACK=$(echo $background | sed 's/#//')
+# CFORE=$(echo $foreground | sed 's/#//')
+# CACTV=$(echo $color3 | sed 's/#//')
+# CNORM=$(echo $color1 | sed 's/#//')
+# CINSE=$(echo $foreground | sed 's/#//')
 
-yabai -m config status_bar_background_color  0xff$CBACK
-yabai -m config status_bar_foreground_color  0xff$CFORE
-yabai -m config active_window_border_color   0xff$CACTV
-yabai -m config normal_window_border_color   0xff$CNORM
-yabai -m config insert_window_border_color   0xff$CINSE
+# yabai -m config status_bar_background_color  0xff$CBACK
+# yabai -m config status_bar_foreground_color  0xff$CFORE
+# yabai -m config active_window_border_color   0xff$CACTV
+# yabai -m config normal_window_border_color   0xff$CNORM
+# yabai -m config insert_window_border_color   0xff$CINSE
 
 echo "yabai config loaded.."
