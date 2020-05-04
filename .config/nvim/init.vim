@@ -3,6 +3,7 @@
 call plug#begin('~/.vim/plugs')
 Plug 'kien/ctrlp.vim'
 Plug 'vim-ctrlspace/vim-ctrlspace'
+Plug 'justinmk/vim-sneak'
 
 Plug 'scrooloose/nerdtree'
 " Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -40,6 +41,8 @@ Plug 'jaredgorski/fogbell.vim'
 Plug 'arcticicestudio/nord-vim'
 " Plug 'flazz/vim-colorschemes'
 " Plug 'felixhummel/setcolors.vim'
+
+Plug 'xuhdev/vim-latex-live-preview'
 call plug#end()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -73,7 +76,6 @@ set relativenumber
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General mappings
-noremap ; :
 noremap <Tab> %
 
 " leader
@@ -96,7 +98,7 @@ noremap <leader>b :b#<CR>
 noremap <leader>t :NERDTreeToggle<CR>
 noremap <leader>g :Gstatus<CR>
 nnoremap <leader>G :<C-u>call gitblame#echo()<CR>
-noremap <leader>P :Prettier<CR>
+noremap <leader>p :Prettier<CR>
 noremap <leader>d :Dash<CR>
 noremap <leader>D :Dash!<CR>
 noremap <leader>O :OR<CR>
@@ -139,7 +141,8 @@ set termguicolors
 " colo gruvbox
 " set bg=dark
 
-colo nord
+" colo nord
+colo rest
 
 set colorcolumn=81
 
@@ -184,11 +187,11 @@ let NERDTreeIgnore=['^node_modules$']
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Linter
-nnoremap = :Prettier<CR>
 let g:prettier#config#parser="typescript"
+
 " run on save
-let g:prettier#autoformat=0
-autocmd BufWritePre *.js,*.jsx,*.mjs,*.css,*.less,*.scss,*.json,*.graphql,*.md PrettierAsync
+" let g:prettier#autoformat=0
+" autocmd BufWritePre *.js,*.jsx,*.mjs,*.css,*.less,*.scss,*.json,*.graphql,*.md PrettierAsync
 
 " JSON for .babelrc files
 autocmd BufRead,BufNewFile .babelrc setfiletype json
@@ -202,6 +205,20 @@ let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclu
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CtrlSpace
 let g:CtrlSpaceDefaultMappingKey = "<C-space> "
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Sneak
+let g:sneak#label = 1
+
+map f <Plug>Sneak_s
+map F <Plug>Sneak_S
+" map f <Plug>Sneak_f
+" map F <Plug>Sneak_F
+map t <Plug>Sneak_t
+map T <Plug>Sneak_T
+
+map m <Plug>Sneak_;
+map M <Plug>Sneak_,
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Ack
@@ -271,7 +288,7 @@ augroup mygroup
 augroup end
 
 " autofix problem of current line
-nmap <leader>qf  <Plug>(coc-fix-current)
+nmap <leader>ff  <Plug>(coc-fix-current)
 
 " use `:OR` for organize import of current buffer
 command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
@@ -293,10 +310,10 @@ let g:coc_global_extensions = [
   \ 'coc-eslint',
   \ 'coc-prettier',
   \ 'coc-html',
-  \ 'coc-emmet',
   \ 'coc-css',
   \ 'coc-markdownlint',
 \ ]
+  " \ 'coc-emmet',
 
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? coc#_select_confirm() :
@@ -320,6 +337,10 @@ let g:coc_snippet_next = '<tab>'
 " let g:multi_cursor_prev_key            = '<C-m>'
 " let g:multi_cursor_skip_key            = '<C-x>'
 " let g:multi_cursor_quit_key            = '<Esc>'
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Latex
+let g:livepreview_previewer = 'open -a Preview'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Color scheme toggle
@@ -443,4 +464,3 @@ noremap <leader>2 :call NextColor(-1)<CR>
 " random
 " nnoremap <A-F8> :call NextColor(0)<CR>
 noremap <leader>3 :call NextColor(0)<CR>
-

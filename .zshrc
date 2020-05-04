@@ -1,11 +1,12 @@
 alias v=nvim
 alias vi=nvim
 alias vim=nvim
-alias todo="nvim ~/todo"
+alias t="nvim ~/todo"
+alias weather="curl v2.wttr.in/${1:-Vancouver} --silent | less -S -R -#3"
 
 # mongo
-alias mongod="brew services start mongodb-community"
-alias mongod-stop="brew services stop mongodb-community"
+# alias mongod="brew services start mongodb-community"
+# alias mongod-stop="brew services stop mongodb-community"
 
 export ZSH="/Users/shwilliam/.oh-my-zsh"
 
