@@ -1,5 +1,3 @@
-// fork of [lambda-gitster](https://github.com/ergenekonyigit/lambda-gitster)
-
 local ret_status="%(?:%{$fg_bold[green]%}:%{$fg_bold[red]%}λ %s)"
 
 function get_pwd(){

@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+exists () {
+    type "$1" &> /dev/null ;
+}
+
+echo "📡 $(networksetup -getairportnetwork en0 | cut -c 24-)"
+
