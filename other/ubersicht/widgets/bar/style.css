@@ -7,7 +7,7 @@
   --fg-workspace: #fafafa;
   --fg-clock: var(--fg-workspace);
   /* size */
-  --height: 30px;
+  --height: 20px;
   /* opacity */
   --opacity: 0;
   /* this value affects --border */
@@ -34,9 +34,7 @@
   --font: Source Code Pro, SF Mono, Menlo, Monospace;
   --font-size: 11px;
   --font-style: regular;
-  --line-height: calc(
-    var(--height) - calc(var(--border) * 2)
-  );
+  --line-height: calc(var(--height) - calc(var(--border) * 2));
   --text-padding: 2ch;
   --webkit-font-smoothing: none;
 }
@@ -86,23 +84,30 @@
   margin-left: var(--padding-left);
 }
 
-.workspace {
-  font: var(--font-size) var(--font);
-  font-style: var(--font-style);
-  color: var(--fg-workspace);
+.holder.-fullheight {
+  height: 100%;
+}
+
+.cpu,
+.mem,
+.battery,
+.network,
+.gh {
   display: inline-block;
   position: absolute;
-  background-color: var(--bg-workspace);
-  opacity: var(--opacity-inner);
   top: var(--alignment-top);
-  right: auto;
   bottom: var(--alignment-bottom);
-  left: 0px;
+  right: 0;
+  font: var(--font-size) var(--font);
+  font-style: var(--font-style);
+  color: #202020;
+  background-color: #fafafa;
+  opacity: var(--opacity-center);
+  display: inline-block;
   padding: 0 var(--text-padding);
-  margin-top: calc(var(--padding-v) + var(--border));
-  margin-bottom: calc(var(--padding-v) + var(--border));
-  margin-left: calc(var(--padding-left) + var(--border));
+  margin: calc(var(--padding-v) + var(--border));
   line-height: var(--line-height);
+  text-align: center;
   border-top-left-radius: var(--border-radius-inner);
   border-top-right-radius: var(--border-radius-inner);
   border-bottom-right-radius: var(--border-radius-inner);
@@ -112,112 +117,29 @@
 }
 
 .network {
-  font: var(--font-size) var(--font);
-  font-style: var(--font-style);
-  background-color: var(--bg-workspace);
-  opacity: var(--opacity-inner);
-  color: var(--fg-workspace);
-  position: absolute;
-  display: inline-block;
-  top: var(--alignment-top);
-  right: auto;
-  bottom: var(--alignment-bottom);
-  left: 0px;
-  padding: 0 var(--text-padding);
+  max-width: 200px;
   margin-top: calc(var(--border) + var(--padding-v));
   margin-bottom: calc(var(--border) + var(--padding-v));
-  margin-left: calc(
-    var(--padding-left) + calc(var(--text-padding) * 2) + 1ch +
-      calc(var(--border) * 2)
+  margin-right: calc(
+    var(--padding-right) + calc(var(--text-padding) * 24) + var(--border)
   );
-  line-height: var(--line-height);
-  border-top-left-radius: var(--border-radius-inner);
-  border-top-right-radius: var(--border-radius-inner);
-  border-bottom-right-radius: var(--border-radius-inner);
-  border-bottom-left-radius: var(--border-radius-inner);
-  box-shadow: var(--shadow-inner);
-  border-bottom: var(--border-bottom);
 }
 
 .battery {
-  font: var(--font-size) var(--font);
-  font-style: var(--font-style);
-  color: var(--fg-workspace);
-  display: inline-block;
-  position: absolute;
-  background-color: var(--bg-workspace);
-  opacity: var(--opacity-inner);
-  padding: 0 var(--text-padding);
-  top: var(--alignment-top);
-  right: 0px;
-  bottom: var(--alignment-bottom);
-  left: auto;
-  margin-top: calc(var(--padding-v) + var(--border));
-  margin-right: calc(var(--border) + var(--padding-right));
-  margin-bottom: calc(var(--padding-v) + var(--border));
-  line-height: var(--line-height);
-  border-top-left-radius: var(--border-radius-inner);
-  border-top-right-radius: var(--border-radius-inner);
-  border-bottom-right-radius: var(--border-radius-inner);
-  border-bottom-left-radius: var(--border-radius-inner);
-  box-shadow: var(--shadow-inner);
-  border-bottom: var(--border-bottom);
+  width: 100px;
+  white-space: nowrap;
 }
 
 .cpu {
-  font: var(--font-size) var(--font);
-  font-style: var(--font-style);
-  color: var(--fg-workspace);
-  display: inline-block;
-  position: absolute;
-  background-color: var(--bg-workspace);
-  opacity: var(--opacity-inner);
-  padding: 0 var(--text-padding);
-  top: var(--alignment-top);
-  right: 0px;
-  bottom: var(--alignment-bottom);
-  left: auto;
-  margin-top: calc(var(--padding-v) + var(--border));
   margin-right: calc(
-    var(--padding-right) + calc(var(--text-padding) * 2) + 14ch +
-      calc(var(--border) * 2)
+    var(--padding-right) + calc(var(--text-padding) * 17) + var(--border)
   );
-  margin-bottom: calc(var(--padding-v) + var(--border));
-  line-height: var(--line-height);
-  border-top-left-radius: var(--border-radius-inner);
-  border-top-right-radius: var(--border-radius-inner);
-  border-bottom-right-radius: var(--border-radius-inner);
-  border-bottom-left-radius: var(--border-radius-inner);
-  box-shadow: var(--shadow-inner);
-  border-bottom: var(--border-bottom);
 }
 
 .mem {
-  font: var(--font-size) var(--font);
-  font-style: var(--font-style);
-  color: var(--fg-workspace);
-  display: inline-block;
-  position: absolute;
-  background-color: var(--bg-workspace);
-  opacity: var(--opacity-inner);
-  padding: 0 var(--text-padding);
-  top: var(--alignment-top);
-  right: 0px;
-  bottom: var(--alignment-bottom);
-  left: auto;
-  margin-top: calc(var(--padding-v) + var(--border));
   margin-right: calc(
-    var(--padding-right) + calc(var(--text-padding)) + 7ch +
-      calc(var(--border))
+    var(--padding-right) + calc(var(--text-padding) * 10) + var(--border)
   );
-  margin-bottom: calc(var(--padding-v) + var(--border));
-  line-height: var(--line-height);
-  border-top-left-radius: var(--border-radius-inner);
-  border-top-right-radius: var(--border-radius-inner);
-  border-bottom-right-radius: var(--border-radius-inner);
-  border-bottom-left-radius: var(--border-radius-inner);
-  box-shadow: var(--shadow-inner);
-  border-bottom: var(--border-bottom);
 }
 
 .clock {
@@ -233,7 +155,7 @@
   top: var(--alignment-top);
   bottom: var(--alignment-bottom);
   left: 50%;
-  transform: translate(-50%);
+  transform: translate(-50%, -5px);
   margin: calc(var(--padding-v) + var(--border));
   line-height: var(--line-height);
   text-align: center;
@@ -243,4 +165,52 @@
   border-bottom-left-radius: var(--border-radius-inner);
   box-shadow: var(--shadow-inner);
   border-bottom: var(--border-bottom);
+}
+
+.todos,
+.todos-marquee {
+  font: var(--font-size) var(--font);
+  font-style: var(--font-style);
+  color: #202020;
+  background-color: #fafafa;
+  opacity: var(--opacity-center);
+  display: inline-block;
+  width: 300px;
+  margin-top: calc(var(--padding-v) + var(--border) + 2rem);
+  margin-right: calc(var(--padding-right));
+  margin-bottom: calc(var(--padding-v) + var(--border));
+  line-height: var(--line-height);
+  border-top-left-radius: var(--border-radius-inner);
+  border-top-right-radius: var(--border-radius-inner);
+  border-bottom-right-radius: var(--border-radius-inner);
+  border-bottom-left-radius: var(--border-radius-inner);
+  box-shadow: var(--shadow-inner);
+  border-bottom: var(--border-bottom);
+  list-style: none;
+  position: absolute;
+  right: 0px;
+  bottom: var(--alignment-bottom);
+  left: auto;
+  line-height: var(--line-height);
+}
+
+.todos-marquee {
+  width: 100%;
+  bottom: calc(var(--padding-v) + var(--border));
+  left: 0;
+}
+
+.todo {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.gh {
+  right: unset;
+  left: 0;
+}
+
+.gh-notifs {
+  white-space: nowrap;
 }

@@ -80,8 +80,10 @@ let g:coc_global_extensions = [
   \ 'coc-html',
   \ 'coc-css',
   \ 'coc-markdownlint',
+  \ 'coc-emoji',
+  \ 'coc-tsserver',
 \ ]
-  " \ 'coc-emmet',
+" \ 'coc-emmet',
 
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? coc#_select_confirm() :

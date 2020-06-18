@@ -1,11 +1,9 @@
-const command = 'date +"%A, %b %d at %H:%M"'
+const command = 'bash bar/scripts/battery'
 const refreshFrequency = 60000
 
 const render = ({output}) => (
   <div class="screen">
-    <div class="holder">
-      <div class="clock">{`${output}`}</div>
-    </div>
+    <div class="battery">[battery] {output}</div>
   </div>
 )
 

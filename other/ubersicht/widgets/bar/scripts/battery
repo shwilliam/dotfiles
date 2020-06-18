@@ -1,0 +1,5 @@
+#!/bin/bash
+
+battery="$(pmset -g batt | grep -o '[0-9]*%')"
+echo $battery
+
