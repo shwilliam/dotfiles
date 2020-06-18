@@ -1,2 +1,15 @@
-node_modules/
+# folder view configuration files
 .DS_Store
+
+# thumbnail cache files
+._*
+Thumbs.db
+
+# files that might appear on external disks
+.Spotlight-V100
+.Trashes
+
+# just in case
+node_modules/
+.env*
+!.env.example
