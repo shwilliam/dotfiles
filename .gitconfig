@@ -1,11 +1,84 @@
 [user]
 	email = w-lindvall@outlook.com
-	name = William L
+	name = William Lindvall
+
 [core]
 	editor = nvim
 	excludesfile = ~/.gitignore
+
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+
+[alias]
+	# log sha, desc & history
+	l = log --pretty=oneline -n 20 --graph --abbrev-commit
+	# status
+	s = status -s
+	# branches
+	b = branch --all
+	# diff since last commit
+	d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
+	# branch tree
+	tree = log --graph --abbrev-commit --decorate --full-history --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)'
+	# delete merged branches
+	cleanup = "!git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
+	# contributors with # of commits
+	who = shortlog --summary --numbered
+
+[apply]
+	# detect whitespace errors when applying patch
+	whitespace = fix
+
+[branch]
+	# sort branches by commit date
+	sort = -committerdate
+
+[core]
+
+	# safe rebase on macos
+	# http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/
+	trustctime = false
+
+	# allow non-ascii filenames to be versioned
+	# http://michael-kuehnel.de/git/2014/11/21/git-mac-osx-and-german-umlaute.html
+	precomposeunicode = false
+
+	# speed
+	# https://git-scm.com/docs/git-update-index#_untracked_cache
+	untrackedCache = true
+
+[color]
+	# color output
+	ui = auto
+
+[color "branch"]
+	current = yellow reverse
+	local = yellow
+	remote = green
+
+[color "diff"]
+	meta = yellow bold
+	frag = magenta bold # line info
+	old = red # deletions
+	new = green # additions
+
+[color "status"]
+	added = yellow
+	changed = green
+	untracked = cyan
+
+[merge]
+	# include summaries of merged commits in newly created merge commit messages
+	log = true
+
+[push]
+	# https://git-scm.com/docs/git-config#git-config-pushdefault
+	default = simple
+	# make `git push` push relevant annotated tags when pushing branches out
+	followTags = true
+
+[url "https://github.com/"]
+	insteadOf = gh:
