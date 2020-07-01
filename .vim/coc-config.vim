@@ -81,9 +81,7 @@ let g:coc_global_extensions = [
   \ 'coc-css',
   \ 'coc-markdownlint',
   \ 'coc-emoji',
-  \ 'coc-tsserver',
 \ ]
-" \ 'coc-emmet',
 
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? coc#_select_confirm() :

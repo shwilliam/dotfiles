@@ -1,6 +1,6 @@
 # functions
 function runvim() {
-  if [ $# -eq 0 ] 
+  if [ $# -eq 0 ]
   then
     command nvim -o `fzf`
   else
@@ -17,6 +17,16 @@ function welcome() {
   echo
 }
 
+function checkweather() {
+  if [ $# -eq 0 ]
+  then
+    local CITY=Vancouver
+  else
+    local CITY=$@
+  fi
+  command curl v2.wttr.in/$CITY --silent | less -S -R -#3
+}
+
 # ls on navigate
 function chpwd() {
   # run after cd
@@ -27,14 +37,12 @@ function chpwd() {
   echo
 }
 
-function checkweather() {
-  if [ $# -eq 0 ]
-  then
-    local CITY=Vancouver
+function update_prompt() {
+  if git rev-parse --git-dir > /dev/null 2>&1; then
+    PROMPT='$(git_super_status)'
   else
-    local CITY=$@
+    PROMPT="%{$fg[red]%}[%{$fg[yellow]%}%{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}%b"$'\n'"%# "
   fi
-  command curl v2.wttr.in/$CITY --silent | less -S -R -#3
 }
 
 # plugins
@@ -46,10 +54,8 @@ source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.zsh/zsh-git-prompt/zshrc.sh
 
 # sane defaults
-
 HISTSIZE=10000
 SAVEHIST=10000
-FZF_DEFAULT_COMMAND="rg --files --hidden --follow -g '!{node_modules,.git,dist,build,.cache,.next}'"
 
 autoload -U colors && colors
 autoload -U promptinit && promptinit
@@ -81,20 +87,26 @@ alias v=runvim
 alias vi=runvim
 alias vim=runvim
 
-# misc
-alias weather=checkweather
-alias pipes="~/pipes.sh"
-alias fetch=neofetch
-
 # yabai
 alias wmstop="brew services stop yabai"
 alias wmstart="brew services start yabai"
 alias wmrestart="brew services restart yabai"
 
+# fzf
+export FZF_DEFAULT_COMMAND="rg --files --hidden --follow -g '!{node_modules,.git,dist,build,.cache,.next}'"
+
+# misc
+alias weather=checkweather
+alias pipes="~/pipes.sh"
+alias fetch=neofetch
+
 # prompt
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[red]%}[%{$fg[yellow]%}%{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}%b ("
 ZSH_THEME_GIT_PROMPT_SUFFIX=")"$'\n'"%# "
-PROMPT='$(git_super_status)'
+
+add-zsh-hook chpwd update_prompt
+add-zsh-hook preexec update_prompt
+add-zsh-hook precmd update_prompt
 
 # nvm
 export NVM_DIR="$HOME/.nvm"

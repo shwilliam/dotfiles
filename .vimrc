@@ -1,32 +1,33 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " plugins (managed with `junegunn/vim-plug`)
 call plug#begin('~/.vim/plugs')
+" tpope
+Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-vinegar'
+Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
+
 " find
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'bronson/vim-visual-star-search'
 Plug 'wincent/loupe'
 
-" open
-Plug 'justinmk/vim-dirvish'
-Plug 'scrooloose/nerdtree'
-Plug 'mhinz/vim-startify'
-
-" edit
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-commentary'
-
 " ui
+Plug 'TaDaa/vimade'
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/goyo.vim'
-" Plug 'Yggdroot/indentLine'
+Plug 'junegunn/limelight.vim'
 
 " themes
-Plug 'junegunn/seoul256.vim'
-Plug 'robertmeta/nofrils'
-Plug 'jaredgorski/fogbell.vim'
 Plug 'gruvbox-community/gruvbox'
 " Plug 'morhetz/gruvbox'
+Plug 'robertmeta/nofrils'
+Plug 'jaredgorski/fogbell.vim'
+Plug 'junegunn/seoul256.vim'
 " Plug 'flazz/vim-colorschemes'
 
 " syntax
@@ -41,11 +42,15 @@ Plug 'mxw/vim-jsx'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " git
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-rhubarb'
 Plug 'zivyangll/git-blame.vim'
 Plug 'airblade/vim-gitgutter'
-Plug 'Xuyuanp/nerdtree-git-plugin'
+
+" tmux
+Plug 'tmux-plugins/vim-tmux-focus-events'
+
+" nerdtree
+" Plug 'scrooloose/nerdtree'
+" Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " misc
 Plug 'rizzatti/dash.vim'
@@ -59,7 +64,67 @@ call plug#end()
 let is_day = (strftime('%H') < 20 && strftime('%H') > 5 ? 1 : 0)
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" general
+set nocompatible
+set fileformat=unix
+set shell=bash
+set noswapfile
+set nobackup
+set nowritebackup
+set hidden
+set autoindent
+set expandtab
+set shiftwidth=2
+set tabstop=2
+set softtabstop=2
+set cursorline
+set noemoji
+set mouse=a
+filetype plugin on
+
+" search
+set hlsearch
+set incsearch
+set showmatch
+set smartcase
+" set ignorecase
+
+" line numbers
+set number
+set nu
+set relativenumber
+
+if exists('&bellof')
+  set bellof=all
+endif
+
+if has('linebreak')
+  set breakindent
+  let &showbreak='↳ '
+  if exists('&breakindentopt')
+    set breakindentopt=shift:2
+  endif
+endif
+
+if has('folding')
+  set foldmethod=indent
+  set foldlevel=10
+  if has('windows')
+    set fillchars=diff:∙
+    set fillchars+=fold:·
+  endif
+endif
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " layout
+if has('windows')
+  set splitbelow
+endif
+
+if has('vertsplit')
+  set splitright
+endif
+
 augroup autoLayout
   autocmd!
   autocmd VimResized * execute "normal! \<c-W>="
@@ -74,51 +139,17 @@ noremap <c-k> <c-w>k
 noremap <c-l> <c-w>l
 
 " resize splits
-noremap <c-w>w :resize +5<CR>
-noremap <c-w>s :resize -5<CR>
-noremap <c-w>d :vertical resize +5<CR>
-noremap <c-w>a :vertical resize -5<CR>
+noremap <silent> <c-w>w :resize +5<CR>
+noremap <silent> <c-w>s :resize -5<CR>
+noremap <silent> <c-w>d :vertical resize +5<CR>
+noremap <silent> <c-w>a :vertical resize -5<CR>
 
 " rotate splits
-noremap <c-w>r <c-w>R
+noremap <silent> <c-w>r <c-w>R
 
 " navigate tabs
-noremap ,, :tabp<CR>
-noremap .. :tabn<CR>
-
-" `jj` to exit insert
-inoremap jj <Esc>
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" general
-set nocompatible
-set fileformat=unix
-set shell=bash
-set noswapfile
-set nobackup
-set nowritebackup
-set hidden
-set autoindent
-set foldmethod=indent
-set foldlevel=2
-set expandtab
-set shiftwidth=2
-set tabstop=2
-set softtabstop=2
-set splitright
-set splitbelow
-
-" search
-set hlsearch
-set incsearch
-set showmatch
-set smartcase
-" set ignorecase
-
-" line numbers
-set number
-set nu
-set relativenumber
+noremap <silent> ,, :tabp<CR>
+noremap <silent> .. :tabn<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " spelling
@@ -128,6 +159,10 @@ augroup markdownSpell
   autocmd FileType markdown setlocal spell
   autocmd BufRead,BufNewFile *.md setlocal spell
 augroup END
+
+if has('syntax')
+  set spellcapcheck=
+endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " abbreviations
@@ -154,18 +189,21 @@ noremap <leader>qa :qa<CR>
 noremap <leader>qa! :qa!<CR>
 noremap <leader>R :%s/
 " unhighlight search matches
-" noremap <leader>/ :noh<CR>
-noremap <leader>b :b#<CR>
+" noremap <silent> <leader>/ :noh<CR>
+noremap <silent> <leader>b :b#<CR>
 " yank to clipboard
-vnoremap <C-c> "*y :let @+=@*<CR>
+vnoremap <silent> <C-c> "*y :let @+=@*<CR>
+
+" `jj` to exit insert
+inoremap jj <Esc>
+
+" up/down arrows scroll
+noremap <silent> <Up> <c-y>
+noremap <silent> <Down> <c-e>
 
 " move lines
-nnoremap ∆ :m .+1<CR>==
-nnoremap ˚ :m .-2<CR>==
-inoremap ∆ <Esc>:m .+1<CR>==gi
-inoremap ˚ <Esc>:m .-2<CR>==gi
-vnoremap ∆ :m '>+1<CR>gv=gv
-vnoremap ˚ :m '<-2<CR>gv=gv
+vnoremap <c-j> :m '>+1<CR>gv=gv
+vnoremap <c-k> :m '<-2<CR>gv=gv
 
 " show syntax highlight groups for word under cursor
 " nmap <leader>? :call <SID>SynStack()<CR>
@@ -177,36 +215,46 @@ vnoremap ˚ :m '<-2<CR>gv=gv
 " endfunc
 
 " plugins
-noremap <leader><CR> :Goyo<CR>
-noremap <leader>t :to vs .<CR>
+noremap <silent> <leader><CR> :Goyo<CR>
+noremap <silent> <leader>t :to vs .<CR>
 noremap <leader>g :Gstatus<CR>
 nnoremap <leader>G :<C-u>call gitblame#echo()<CR>
-noremap <leader>p :Prettier<CR>
-noremap <leader>d :Dash<CR>
-noremap <leader>D :Dash!<CR>
-noremap <leader>O :OR<CR>
+noremap <silent> <leader>p :Prettier<CR>
+noremap <silent> <leader>d :Dash<CR>
+noremap <silent> <leader>D :Dash!<CR>
+noremap <silent> <leader>O :OR<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " git
 command GS Gstatus
 command GC Gcommit -v
 command GCA Gcommit --amend
-command GD Gdiff
+command GD Gvdiff
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " theme
-set termguicolors
+if has('termguicolors')
+  set termguicolors
+endif
 
 execute 'colorscheme ' . (is_day == 1 ? 'seoul256-light' : 'seoul256')
-
 " execute 'colorscheme ' . (is_day == 1 ? 'gruvbox' : 'fogbell')
 " execute 'set bg=' . (is_day == 1 ? 'light' : 'dark')
 
 set colorcolumn=81
+" if exists('+colorcolumn')
+"   " highlight up to 255 chars
+"   let&l:colorcolumn='+'.join(range(0, 254), ',+')
+" endif
 
 " insert chars at tabs and trailing spaces
 exec "set listchars=tab:\uBB\uBB,trail:\uB7,nbsp:~"
 set list
+set listchars=nbsp:⦸
+set listchars+=tab:▷┅
+set listchars+=extends:»
+set listchars+=precedes:«
+set listchars+=trail:•
 
 let lightline_scheme = (is_day == 1) ? 'ayu_light' : 'seoul256'
 let g:lightline = {
@@ -228,39 +276,25 @@ let g:lightline = {
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " nerdtree
+" noremap <leader>T :NERDTreeToggle<CR>
+" let NERDTreeShowHidden=1
+" let NERDTreeIgnore=['^node_modules$']
 
-noremap <leader>T :NERDTreeToggle<CR>
-let NERDTreeShowHidden=1
-let NERDTreeIgnore=['^node_modules$']
-
-let g:NERDTreeDirArrowExpandable = '⤳'
-let g:NERDTreeDirArrowCollapsible = '↘︎'
-
-let g:NERDTreeIndicatorMapCustom = {
-    \ "Modified"  : "M",
-    \ "Staged"    : "✚",
-    \ "Untracked" : "U",
-    \ "Renamed"   : "R",
-    \ "Unmerged"  : "═",
-    \ "Deleted"   : "D",
-    \ "Dirty"     : "✗",
-    \ "Clean"     : "✔︎",
-    \ 'Ignored'   : 'I',
-    \ "Unknown"   : "?"
-    \ }
+" let g:NERDTreeDirArrowExpandable = '⤳'
+" let g:NERDTreeDirArrowCollapsible = '↘︎'
 
 " let g:NERDTreeIndicatorMapCustom = {
-"     \ "Modified"  : emoji#for('pencil'),
-"     \ "Staged"    : emoji#for('rocket'),
-"     \ "Untracked" : emoji#for('wastebasket'),
-"     \ "Renamed"   : emoji#for('abc'),
-"     \ "Unmerged"  : emoji#for('collision'),
-"     \ "Deleted"   : emoji#for('anger'),
-"     \ "Dirty"     : emoji#for('no_good'),
-"     \ "Clean"     : emoji#for('ok_hand'),
-"     \ "Ignored"   : emoji#for('shrug'),
-"     \ "Unknown"   : emoji#for('shrug'),
-"     \ }
+"   \ "Modified"  : "M",
+"   \ "Staged"    : "✚",
+"   \ "Untracked" : "U",
+"   \ "Renamed"   : "R",
+"   \ "Unmerged"  : "═",
+"   \ "Deleted"   : "D",
+"   \ "Dirty"     : "✗",
+"   \ "Clean"     : "✔︎",
+"   \ 'Ignored'   : 'I',
+"   \ "Unknown"   : "?"
+"   \ }
 
 " augroup nerdtree
 "   autocmd!
@@ -301,7 +335,6 @@ autocmd BufRead,BufNewFile .babelrc setfiletype json
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " fzf
-
 nnoremap // :Rg!<CR>
 nnoremap <silent> <c-p> :GFiles! --others<CR>
 nnoremap <silent> <c-P> :Files!<CR>
@@ -335,34 +368,30 @@ nmap <leader>/ <Plug>(LoupeClearHighlight)
 " markdown preview
 let g:mkdp_page_title = '「${name}」'
 " open preview when entering md buffer
-let g:mkdp_auto_start = 1
+" let g:mkdp_auto_start = 1
 " refresh on save or leaving insert mode
 let g:mkdp_refresh_slow = 1
-" let g:mkdp_echo_preview_url = 1
+let g:mkdp_echo_preview_url = 1
 
 let g:mkdp_preview_options = {
-    \ 'disable_sync_scroll': 0,
-    \ 'sync_scroll_type': 'middle',
-    \ 'hide_yaml_meta': 1,
-    \ 'content_editable': v:false
-    \ }
+  \ 'disable_sync_scroll': 0,
+  \ 'sync_scroll_type': 'middle',
+  \ 'hide_yaml_meta': 1,
+  \ 'content_editable': v:false
+  \ }
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" startify
-autocmd User Startified for key in ['b','s','t','v'] |
-    \ execute 'nunmap <buffer>' key | endfor
+" vimade
+let g:vimade = {}
+let g:vimade.fadelevel = 0.7
+let g:vimade.enablefocusfading = 1
 
-let g:startify_bookmarks = [
-    \ {'v': '~/.vimrc'},
-    \ {'t': '~/.tmux.config'},
-    \ {'z': '~/.zshrc'}
-    \ ]
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" limelight
+let g:limelight_priority = -1
 
-let g:startify_lists = [
-    \ { 'type': 'dir',       'header': ['   MRU '. getcwd()] },
-    \ { 'type': 'files',     'header': ['   MRU']            },
-    \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
-    \ ]
+autocmd! User GoyoEnter Limelight
+autocmd! User GoyoLeave Limelight!
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " imports
