@@ -120,4 +120,9 @@ export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 
+# ruby
+# if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+# export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
+export PATH="$PATH:$HOME/.rvm/bin"
+
 welcome
