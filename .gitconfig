@@ -37,7 +37,6 @@
 	sort = -committerdate
 
 [core]
-
 	# safe rebase on macos
 	# http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/
 	trustctime = false
@@ -69,6 +68,9 @@
 	added = yellow
 	changed = green
 	untracked = cyan
+
+[init]
+templateDir = ~/.config/git/template
 
 [merge]
 	# include summaries of merged commits in newly created merge commit messages
