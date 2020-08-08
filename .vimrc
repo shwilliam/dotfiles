@@ -23,6 +23,7 @@ Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 
 " themes
+Plug 'cideM/yui'
 Plug 'gruvbox-community/gruvbox'
 " Plug 'morhetz/gruvbox'
 Plug 'robertmeta/nofrils'
@@ -237,7 +238,8 @@ if has('termguicolors')
   set termguicolors
 endif
 
-execute 'colorscheme ' . (is_day == 1 ? 'seoul256-light' : 'seoul256')
+colorscheme yui
+" execute 'colorscheme ' . (is_day == 1 ? 'seoul256-light' : 'seoul256')
 " execute 'colorscheme ' . (is_day == 1 ? 'gruvbox' : 'fogbell')
 " execute 'set bg=' . (is_day == 1 ? 'light' : 'dark')
 
