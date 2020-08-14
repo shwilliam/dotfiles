@@ -1,5 +1,5 @@
 {
-  "BTTPresetName" : "default",
+  "BTTPresetName" : "bar",
   "BTTPresetColor" : "223.000002, 197.000003, 223.000002, 255.000000",
   "BTTGeneralSettings" : {
     "BTTPathSampleSize" : 100,
@@ -637,13 +637,13 @@
           }
         },
         {
-          "BTTTouchBarButtonName" : "KeePassXC",
+          "BTTTouchBarButtonName" : "1Password",
           "BTTTriggerType" : 629,
           "BTTTriggerTypeDescription" : "Touch Bar button",
           "BTTTriggerClass" : "BTTTriggerTypeTouchBar",
           "BTTPredefinedActionType" : 49,
           "BTTPredefinedActionName" : "Launch Application \/ Open File \/ Start Apple Script …",
-          "BTTLaunchPath" : "file:\/\/\/Applications\/KeePassXC.app",
+          "BTTLaunchPath" : "file:\/\/\/Applications\/1Password%207.app",
           "BTTEnabled2" : 1,
           "BTTAlternateModifierKeys" : 0,
           "BTTRepeatDelay" : 0,

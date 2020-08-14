@@ -11,5 +11,4 @@ Thumbs.db
 
 # just in case
 node_modules/
-.env*
-!.env.example
+.env

@@ -25,7 +25,7 @@ Plug 'junegunn/limelight.vim'
 " themes
 Plug 'cideM/yui'
 Plug 'gruvbox-community/gruvbox'
-" Plug 'morhetz/gruvbox'
+Plug 'morhetz/gruvbox'
 Plug 'robertmeta/nofrils'
 Plug 'jaredgorski/fogbell.vim'
 Plug 'junegunn/seoul256.vim'

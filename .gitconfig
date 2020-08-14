@@ -84,3 +84,6 @@ templateDir = ~/.config/git/template
 
 [url "https://github.com/"]
 	insteadOf = gh:
+
+[hub]
+	protocol = https
