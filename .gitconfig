@@ -82,6 +82,9 @@ templateDir = ~/.config/git/template
 	# make `git push` push relevant annotated tags when pushing branches out
 	followTags = true
 
+[pull]
+	ff = only
+
 [url "https://github.com/"]
 	insteadOf = gh:
 
