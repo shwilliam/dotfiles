@@ -95,11 +95,6 @@ alias wmrestart="brew services restart yabai"
 # fzf
 export FZF_DEFAULT_COMMAND="rg --files --hidden --follow -g '!{node_modules,.git,dist,build,.cache,.next}'"
 
-# misc
-alias weather=checkweather
-alias pipes="~/pipes.sh"
-alias fetch=neofetch
-
 # prompt
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[red]%}[%{$fg[yellow]%}%{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}%b ("
 ZSH_THEME_GIT_PROMPT_SUFFIX=")"$'\n'"%# "
@@ -113,16 +108,18 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
-# android studio
-# export ANDROID_HOME=$HOME/Library/Android/sdk
-# export PATH=$PATH:$ANDROID_HOME/emulator
-# export PATH=$PATH:$ANDROID_HOME/tools
-# export PATH=$PATH:$ANDROID_HOME/tools/bin
-# export PATH=$PATH:$ANDROID_HOME/platform-tools
-
 # ruby
 # if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 # export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
 export PATH="$PATH:$HOME/.rvm/bin"
+
+# android studio
+export ANDROID_SDK=/Users/shwilliam/Library/Android/sdk
+export PATH=/Users/shwilliam/Library/Android/sdk/platform-tools:$PATH
+
+# misc
+alias weather=checkweather
+alias pipes="~/pipes.sh"
+alias fetch=neofetch
 
 welcome
