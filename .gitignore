@@ -9,6 +9,9 @@ Thumbs.db
 .Spotlight-V100
 .Trashes
 
+# dumps
+dump.rdb
+
 # just in case
 node_modules/
 .env
