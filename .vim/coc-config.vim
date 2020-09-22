@@ -56,7 +56,7 @@ augroup mygroup
 augroup end
 
 " autofix problem of current line
-nmap <leader>ff  <Plug>(coc-fix-current)
+" nmap <leader>ff  <Plug>(coc-fix-current)
 
 " use `:OR` for organize import of current buffer
 command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
