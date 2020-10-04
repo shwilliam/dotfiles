@@ -1,8 +1,27 @@
 [
   {
+    "key": "ctrl+z",
+    "command": "workbench.action.maximizeEditor"
+  },
+  {
+    "key": "ctrl+e",
+    "command": "workbench.action.evenEditorWidths"
+  },
+  {
     "key": "ctrl+t",
-    "command": "workbench.action.terminal.focus",
-    "when": "editorFocus"
+    "command": "workbench.view.explorer"
+  },
+  {
+    "key": "cmd+t",
+    "command": "workbench.action.terminal.focus"
+  },
+  {
+    "key": "ctrl+g",
+    "command": "workbench.view.scm"
+  },
+  {
+    "key": "ctrl+/",
+    "command": "workbench.action.findInFiles"
   },
   {
     "key": "ctrl+l",
