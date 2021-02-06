@@ -11,15 +11,15 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 
 " find
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-Plug 'bronson/vim-visual-star-search'
-Plug 'wincent/loupe'
+" Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+" Plug 'junegunn/fzf.vim'
+" Plug 'bronson/vim-visual-star-search'
+" Plug 'wincent/loupe'
 
 " ui
-Plug 'TaDaa/vimade'
+" Plug 'TaDaa/vimade'
 Plug 'itchyny/lightline.vim'
-Plug 'junegunn/goyo.vim'
+" Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 
 " themes
@@ -54,10 +54,10 @@ Plug 'tmux-plugins/vim-tmux-focus-events'
 " Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " misc
-Plug 'rizzatti/dash.vim'
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & npm install'  }
+" Plug 'rizzatti/dash.vim'
+" Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & npm install'  }
 Plug 'machakann/vim-highlightedyank'
-Plug 'junegunn/vim-emoji'
+" Plug 'junegunn/vim-emoji'
 call plug#end()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -318,11 +318,11 @@ let g:gitgutter_sign_removed = "D"
 " let g:gitgutter_sign_modified_removed = emoji#for('collision')
 
 " :Emoji to replace emoji codes
-augroup emoji_complete
-  autocmd!
-  autocmd FileType markdown setlocal completefunc=emoji#complete
-  command! -nargs=* Emoji %s/:\([^:]\+\):/\=emoji#for(submatch(1), submatch(0))/g
-augroup END
+" augroup emoji_complete
+"   autocmd!
+"   autocmd FileType markdown setlocal completefunc=emoji#complete
+"   command! -nargs=* Emoji %s/:\([^:]\+\):/\=emoji#for(submatch(1), submatch(0))/g
+" augroup END
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " linter
@@ -337,11 +337,11 @@ autocmd BufRead,BufNewFile .babelrc setfiletype json
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " fzf
-nnoremap // :Rg!<CR>
-nnoremap <silent> <c-p> :GFiles! --others<CR>
-nnoremap <silent> <c-P> :Files!<CR>
-nnoremap <silent> <c-space> :Buffers!<CR>
-nnoremap <silent> <c-p>
+" nnoremap // :Rg!<CR>
+" nnoremap <silent> <c-p> :GFiles! --others<CR>
+" nnoremap <silent> <c-P> :Files!<CR>
+" nnoremap <silent> <c-space> :Buffers!<CR>
+" nnoremap <silent> <c-p>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " react
@@ -350,8 +350,8 @@ let g:jsx_ext_required=0
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " goyo
-let g:goyo_width=80
-let g:goyo_height='95%'
+" let g:goyo_width=80
+" let g:goyo_height='95%'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " highlighted yank
@@ -364,36 +364,36 @@ highlight HighlightedyankRegion cterm=reverse gui=reverse
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " loupe
-nmap <leader>/ <Plug>(LoupeClearHighlight)
+" nmap <leader>/ <Plug>(LoupeClearHighlight)
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " markdown preview
-let g:mkdp_page_title = '「${name}」'
+" let g:mkdp_page_title = '「${name}」'
 " open preview when entering md buffer
 " let g:mkdp_auto_start = 1
 " refresh on save or leaving insert mode
-let g:mkdp_refresh_slow = 1
-let g:mkdp_echo_preview_url = 1
+" let g:mkdp_refresh_slow = 1
+" let g:mkdp_echo_preview_url = 1
 
-let g:mkdp_preview_options = {
-  \ 'disable_sync_scroll': 0,
-  \ 'sync_scroll_type': 'middle',
-  \ 'hide_yaml_meta': 1,
-  \ 'content_editable': v:false
-  \ }
+" let g:mkdp_preview_options = {
+"   \ 'disable_sync_scroll': 0,
+"   \ 'sync_scroll_type': 'middle',
+"   \ 'hide_yaml_meta': 1,
+"   \ 'content_editable': v:false
+"   \ }
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vimade
-let g:vimade = {}
-let g:vimade.fadelevel = 0.7
-let g:vimade.enablefocusfading = 1
+" let g:vimade = {}
+" let g:vimade.fadelevel = 0.7
+" let g:vimade.enablefocusfading = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " limelight
-let g:limelight_priority = -1
+" let g:limelight_priority = -1
 
-autocmd! User GoyoEnter Limelight
-autocmd! User GoyoLeave Limelight!
+" autocmd! User GoyoEnter Limelight
+" autocmd! User GoyoLeave Limelight!
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " imports
