@@ -39,10 +39,10 @@ shift + ctrl - n  : yabai -m display --focus 1
 shift + ctrl - m  : yabai -m display --focus 2
 
 # change window size
-shift + ctrl - s : yabai -m window --resize left:-40:0
-shift + ctrl - d : yabai -m window --resize bottom:0:40
-shift + ctrl - e : yabai -m window --resize top:0:-40
-shift + ctrl - f : yabai -m window --resize right:40:0
+shift + ctrl - a : yabai -m window --resize left:-40:0
+shift + ctrl - s : yabai -m window --resize bottom:0:40
+shift + ctrl - w : yabai -m window --resize top:0:-40
+shift + ctrl - d : yabai -m window --resize right:40:0
 
 # rotate tree
 shift + ctrl - r : yabai -m space --rotate 90
@@ -53,7 +53,7 @@ shift + ctrl - r : yabai -m space --rotate 90
 # shift + ctrl - n : yabai -m config layout float
 
 # toggle window fullscreen zoom
-shift + ctrl - g : yabai -m window --toggle zoom-fullscreen
+shift + ctrl - f : yabai -m window --toggle zoom-fullscreen
 
 # float / unfloat window and center on screen
 shift + ctrl - t : yabai -m window --toggle float;\
