@@ -1,6 +1,22 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " plugins (managed with `junegunn/vim-plug`)
 call plug#begin('~/.vim/plugs')
+" ui
+Plug 'itchyny/lightline.vim'
+Plug 'junegunn/limelight.vim'
+
+" themes
+Plug 'junegunn/seoul256.vim'
+Plug 'cideM/yui'
+Plug 'gruvbox-community/gruvbox'
+Plug 'morhetz/gruvbox'
+Plug 'robertmeta/nofrils'
+Plug 'jaredgorski/fogbell.vim'
+
+" git
+Plug 'zivyangll/git-blame.vim'
+Plug 'airblade/vim-gitgutter'
+
 " tpope
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-vinegar'
@@ -10,54 +26,17 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 
-" find
-" Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-" Plug 'junegunn/fzf.vim'
-" Plug 'bronson/vim-visual-star-search'
-" Plug 'wincent/loupe'
-
-" ui
-" Plug 'TaDaa/vimade'
-Plug 'itchyny/lightline.vim'
-" Plug 'junegunn/goyo.vim'
-Plug 'junegunn/limelight.vim'
-
-" themes
-Plug 'cideM/yui'
-Plug 'gruvbox-community/gruvbox'
-Plug 'morhetz/gruvbox'
-Plug 'robertmeta/nofrils'
-Plug 'jaredgorski/fogbell.vim'
-Plug 'junegunn/seoul256.vim'
-" Plug 'flazz/vim-colorschemes'
-
-" syntax
-" requires prettier install
-Plug 'prettier/vim-prettier'
-" syntax highlight ts
-Plug 'HerringtonDarkholme/yats.vim'
-Plug 'mxw/vim-jsx'
-
-" autocomplete/suggest (requires language extensions)
-" eg. `:CocInstall coc-tsserver coc-json coc-html coc-css`
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-" git
-Plug 'zivyangll/git-blame.vim'
-Plug 'airblade/vim-gitgutter'
-
-" tmux
-Plug 'tmux-plugins/vim-tmux-focus-events'
-
-" nerdtree
-" Plug 'scrooloose/nerdtree'
-" Plug 'Xuyuanp/nerdtree-git-plugin'
+" lsp
+Plug 'neovim/nvim-lspconfig'
+Plug 'glepnir/lspsaga.nvim'
+Plug 'nvim-lua/completion-nvim'
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 
 " misc
-" Plug 'rizzatti/dash.vim'
-" Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & npm install'  }
 Plug 'machakann/vim-highlightedyank'
-" Plug 'junegunn/vim-emoji'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 call plug#end()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -78,6 +57,7 @@ set expandtab
 set shiftwidth=2
 set tabstop=2
 set softtabstop=2
+set scrolloff=8
 set cursorline
 set noemoji
 set mouse=a
@@ -166,19 +146,6 @@ if has('syntax')
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" abbreviations
-" iabbrev AND &amp;
-" iabbrev SPACE &nbsp;
-" iabbrev GT &gt;
-" iabbrev LT &lt;
-" iabbrev COPY &copy;
-" iabbrev INFIN &infin;
-" iabbrev APOS &apos;
-" iabbrev QUOT &quot;
-" iabbrev RIQ &raquo;
-" iabbrev LIQ &laquo;
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " general mappings
 let mapleader=" "
 
@@ -190,7 +157,7 @@ noremap <leader>qa :qa<CR>
 noremap <leader>qa! :qa!<CR>
 noremap <leader>R :%s/
 " unhighlight search matches
-" noremap <silent> <leader>/ :noh<CR>
+noremap <silent> <leader>/ :noh<CR>
 noremap <silent> <leader>b :b#<CR>
 " yank to clipboard
 vnoremap <silent> <C-c> "*y :let @+=@*<CR>
@@ -206,31 +173,8 @@ noremap <silent> <Down> <c-e>
 vnoremap <c-j> :m '>+1<CR>gv=gv
 vnoremap <c-k> :m '<-2<CR>gv=gv
 
-" show syntax highlight groups for word under cursor
-" nmap <leader>? :call <SID>SynStack()<CR>
-" function! <SID>SynStack()
-"   if !exists("*synstack")
-"     return
-"   endif
-"   echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
-" endfunc
-
-" plugins
-noremap <silent> <leader><CR> :Goyo<CR>
-noremap <silent> <leader>t :to vs .<CR>
-noremap <leader>g :Gstatus<CR>
-nnoremap <leader>G :<C-u>call gitblame#echo()<CR>
-noremap <silent> <leader>p :Prettier<CR>
-noremap <silent> <leader>d :Dash<CR>
-noremap <silent> <leader>D :Dash!<CR>
-noremap <silent> <leader>O :OR<CR>
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " git
-command GS Gstatus
-command GC Gcommit -v
-command GCA Gcommit --amend
-command GD Gvdiff
+nnoremap <leader>G :<C-u>call gitblame#echo()<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " theme
@@ -238,16 +182,14 @@ if has('termguicolors')
   set termguicolors
 endif
 
-colorscheme yui
-" execute 'colorscheme ' . (is_day == 1 ? 'seoul256-light' : 'seoul256')
-" execute 'colorscheme ' . (is_day == 1 ? 'gruvbox' : 'fogbell')
-" execute 'set bg=' . (is_day == 1 ? 'light' : 'dark')
-
 set colorcolumn=81
-" if exists('+colorcolumn')
-"   " highlight up to 255 chars
-"   let&l:colorcolumn='+'.join(range(0, 254), ',+')
-" endif
+
+" colorscheme gruvbox
+" colorscheme yui
+execute 'colorscheme ' . (is_day == 1 ? 'seoul256-light' : 'seoul256')
+" execute 'colorscheme ' . (is_day == 1 ? 'gruvbox' : 'fogbell')
+
+execute 'set bg=' . (is_day == 1 ? 'light' : 'dark')
 
 " insert chars at tabs and trailing spaces
 exec "set listchars=tab:\uBB\uBB,trail:\uB7,nbsp:~"
@@ -276,126 +218,23 @@ let g:lightline = {
  \    },
  \  }
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" nerdtree
-" noremap <leader>T :NERDTreeToggle<CR>
-" let NERDTreeShowHidden=1
-" let NERDTreeIgnore=['^node_modules$']
-
-" let g:NERDTreeDirArrowExpandable = '⤳'
-" let g:NERDTreeDirArrowCollapsible = '↘︎'
-
-" let g:NERDTreeIndicatorMapCustom = {
-"   \ "Modified"  : "M",
-"   \ "Staged"    : "✚",
-"   \ "Untracked" : "U",
-"   \ "Renamed"   : "R",
-"   \ "Unmerged"  : "═",
-"   \ "Deleted"   : "D",
-"   \ "Dirty"     : "✗",
-"   \ "Clean"     : "✔︎",
-"   \ 'Ignored'   : 'I',
-"   \ "Unknown"   : "?"
-"   \ }
-
-" augroup nerdtree
-"   autocmd!
-"   autocmd FileType nerdtree syntax clear NERDTreeFlags
-"   autocmd FileType nerdtree syntax match hideBracketsInNerdTree "\]" contained conceal containedin=ALL
-"   autocmd FileType nerdtree syntax match hideBracketsInNerdTree "\[" contained conceal containedin=ALL
-"   autocmd FileType nerdtree setlocal conceallevel=3
-"   autocmd FileType nerdtree setlocal concealcursor=nvic
-" augroup END
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" emoji
 let g:gitgutter_sign_added = "✚"
 let g:gitgutter_sign_modified = "M"
 let g:gitgutter_sign_removed = "D"
-" let g:gitgutter_sign_added = emoji#for('small_blue_diamond')
-" let g:gitgutter_sign_modified = emoji#for('small_orange_diamond')
-" let g:gitgutter_sign_removed = emoji#for('small_red_triangle')
-" let g:gitgutter_sign_modified_removed = emoji#for('collision')
 
-" :Emoji to replace emoji codes
-" augroup emoji_complete
-"   autocmd!
-"   autocmd FileType markdown setlocal completefunc=emoji#complete
-"   command! -nargs=* Emoji %s/:\([^:]\+\):/\=emoji#for(submatch(1), submatch(0))/g
-" augroup END
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" linter
-let g:prettier#config#parser="typescript"
+" lsp
+nnoremap <silent>K :Lspsaga hover_doc<CR>
+nnoremap <silent> gh <Cmd>Lspsaga lsp_finder<CR>
+nnoremap <silent> <C-j> :Lspsaga diagnostic_jump_next<CR>
 
-" run on save
-" let g:prettier#autoformat=0
-" autocmd BufWritePre *.js,*.jsx,*.mjs,*.css,*.less,*.scss,*.json,*.graphql,*.md PrettierAsync
+set completeopt=menuone,noinsert,noselect
+" tab and s-tab for completion nav
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
-" JSON for .babelrc files
-autocmd BufRead,BufNewFile .babelrc setfiletype json
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" fzf
-" nnoremap // :Rg!<CR>
-" nnoremap <silent> <c-p> :GFiles! --others<CR>
-" nnoremap <silent> <c-P> :Files!<CR>
-" nnoremap <silent> <c-space> :Buffers!<CR>
-" nnoremap <silent> <c-p>
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" react
-" allow JSX in .js files
-let g:jsx_ext_required=0
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" goyo
-" let g:goyo_width=80
-" let g:goyo_height='95%'
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" highlighted yank
-if !exists('##TextYankPost')
-  map y <Plug>(highlightedyank)
-endif
-
-let g:highlightedyank_highlight_duration = 300
-highlight HighlightedyankRegion cterm=reverse gui=reverse
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" loupe
-" nmap <leader>/ <Plug>(LoupeClearHighlight)
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" markdown preview
-" let g:mkdp_page_title = '「${name}」'
-" open preview when entering md buffer
-" let g:mkdp_auto_start = 1
-" refresh on save or leaving insert mode
-" let g:mkdp_refresh_slow = 1
-" let g:mkdp_echo_preview_url = 1
-
-" let g:mkdp_preview_options = {
-"   \ 'disable_sync_scroll': 0,
-"   \ 'sync_scroll_type': 'middle',
-"   \ 'hide_yaml_meta': 1,
-"   \ 'content_editable': v:false
-"   \ }
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" vimade
-" let g:vimade = {}
-" let g:vimade.fadelevel = 0.7
-" let g:vimade.enablefocusfading = 1
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" limelight
-" let g:limelight_priority = -1
-
-" autocmd! User GoyoEnter Limelight
-" autocmd! User GoyoLeave Limelight!
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" imports
-source ~/.vim/coc-config.vim
-source ~/.vim/colors.vim
+nnoremap <silent> ;f <cmd>Telescope find_files<cr>
+" nnoremap <silent> ;r <cmd>Telescope live_grep<cr>
+nnoremap <silent> ;; <cmd>Telescope buffers<cr>
+" nnoremap <silent> ;; <cmd>Telescope help_tags<cr>

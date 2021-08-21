@@ -1,3 +1,8 @@
+PS1="%1~ %#"
+
+# plugs
+source ~/.zsh/emoji-clock.plugin.zsh
+
 # functions
 function runvim() {
   if [ $# -eq 0 ]
@@ -37,22 +42,6 @@ function chpwd() {
   echo
 }
 
-function update_prompt() {
-  if git rev-parse --git-dir > /dev/null 2>&1; then
-    PROMPT='$(git_super_status)'
-  else
-    PROMPT="%{$fg[red]%}[%{$fg[yellow]%}%{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}%b"$'\n'"%# "
-  fi
-}
-
-# plugins
-source ~/.zsh/zsh-interactive-cd.plugin.zsh
-source ~/.zsh/emoji-clock.plugin.zsh
-# clone `zsh-users/zsh-autosuggestions`
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-# clone `olivierverdier/zsh-git-prompt`
-source ~/.zsh/zsh-git-prompt/zshrc.sh
-
 # sane defaults
 HISTSIZE=10000
 SAVEHIST=10000
@@ -82,44 +71,21 @@ setopt share_history          # share command history data
 
 # (neo)vim
 export EDITOR='nvim'
-
 alias v=runvim
 alias vi=runvim
 alias vim=runvim
+alias oldvim="vim"
 
-# yabai
-alias wmstop="brew services stop yabai"
-alias wmstart="brew services start yabai"
-alias wmrestart="brew services restart yabai"
-
-# fzf
-export FZF_DEFAULT_COMMAND="rg --files --hidden --follow -g '!{node_modules,.git,dist,build,.cache,.next}'"
-
-# prompt
-ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[red]%}[%{$fg[yellow]%}%{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}%b ("
-ZSH_THEME_GIT_PROMPT_SUFFIX=")"$'\n'"%# "
-
-add-zsh-hook chpwd update_prompt
-add-zsh-hook preexec update_prompt
-add-zsh-hook precmd update_prompt
+# dbs
+alias pg:start="/opt/homebrew/opt/postgresql/bin/postgres -D /opt/homebrew/var/postgres"
+alias mg:start="mongod --config /opt/homebrew/etc/mongod.conf"
 
 # nvm
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
-# ruby
-# if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-# export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
-export PATH="$PATH:$HOME/.rvm/bin"
-
-# android studio
-export ANDROID_SDK=/Users/shwilliam/Library/Android/sdk
-export PATH=/Users/shwilliam/Library/Android/sdk/platform-tools:$PATH
-
 # misc
 alias weather=checkweather
-alias pipes="~/pipes.sh"
-alias fetch=neofetch
 
 welcome

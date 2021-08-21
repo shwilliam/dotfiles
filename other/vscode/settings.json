@@ -1,0 +1,74 @@
+{
+  "editor.fontFamily": "Hasklig, Menlo, Monaco, 'Courier New', monospace",
+  "editor.cursorBlinking": "solid",
+  "editor.tabSize": 2,
+  "editor.lineHeight": 22,
+  "editor.formatOnSave": true,
+  "editor.hover.delay": 100,
+  "editor.fontSize": 13,
+  "editor.glyphMargin": false,
+  "editor.copyWithSyntaxHighlighting": false,
+  "editor.renderWhitespace": "trailing",
+  "editor.lineNumbers": "relative",
+  "editor.minimap.enabled": false,
+  "editor.suggest.showIcons": false,
+  "editor.renderIndentGuides": false,
+  "editor.suggestSelection": "first",
+  "editor.inlineSuggest.enabled": true,
+  "telemetry.enableCrashReporter": false,
+  "telemetry.enableTelemetry": false,
+  "emmet.showExpandedAbbreviation": "never",
+  "workbench.startupEditor": "none",
+  "workbench.activityBar.visible": false,
+  "workbench.colorTheme": "Gruvbox Light Hard",
+  "workbench.preferredLightColorTheme": "Gruvbox Light Medium",
+  "workbench.iconTheme": null,
+  "workbench.tips.enabled": false,
+  "workbench.tree.indent": 8,
+  "workbench.tree.renderIndentGuides": "none",
+  "workbench.preferredDarkColorTheme": "Gruvbox Dark Medium",
+  "workbench.preferredHighContrastColorTheme": "Gruvbox Dark Hard",
+  "window.autoDetectHighContrast": false,
+  "workbench.enableExperiments": false,
+  "workbench.editor.untitled.hint": "hidden",
+  "workbench.editor.showIcons": false,
+  "breadcrumbs.enabled": false,
+  "breadcrumbs.icons": false,
+  "diffEditor.ignoreTrimWhitespace": false,
+  "diffEditor.codeLens": true,
+  "zenMode.fullScreen": false,
+  "zenMode.hideLineNumbers": false,
+  "zenMode.hideStatusBar": false,
+  "zenMode.hideTabs": false,
+  "zenMode.silentNotifications": false,
+  "vim.useSystemClipboard": true,
+  "javascript.suggest.autoImports": false,
+  "typescript.tsserver.maxTsServerMemory": 6072,
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "vim.insertModeKeyBindings": [
+    {
+      "before": ["j", "j"],
+      "after": ["<Esc>"]
+    }
+  ],
+  "[javascript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "github.copilot.enable": {
+    "*": false,
+    "yaml": false,
+    "plaintext": true,
+    "markdown": false
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+}
